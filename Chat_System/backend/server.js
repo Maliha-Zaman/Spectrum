@@ -14,9 +14,9 @@ const app = express();
 app.listen(88, console.log("Server running on port 88"));
 // app.use(express.json()); // to accept json data
 
-// app.get("/", (req, res) => {
-//   res.send("API Running!");
-// });
+app.get("/", (req, res) => {
+  res.send("API Running!");
+});
 // app.get("/api/chat", (req, res) => {
 //   res.send(chats);
 // });
