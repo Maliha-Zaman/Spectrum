@@ -13,7 +13,7 @@ dotenv.config();
 connectDB();
 const app = express();
 app.listen(88, console.log("Server running on port ${PORT}".yellow.bold));
-// app.use(express.json()); // to accept json data
+app.use(express.json()); // to accept json data
 
 // app.get("/", (req, res) => {
 //   res.send("API Running!");
@@ -45,8 +45,8 @@ app.use("/api/message", messageRoutes);
 // // --------------------------deployment------------------------------
 
 // // Error Handling middlewares
-// app.use(notFound);
-// app.use(errorHandler);
+app.use(notFound);
+app.use(errorHandler);
 
 // const PORT = process.env.PORT;
 
