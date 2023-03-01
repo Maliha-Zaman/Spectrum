@@ -1,29 +1,30 @@
 const express = require("express");
-const { chats } = require("./data/data");
-// const connectDB = require("./config/db");
 const dotenv = require("dotenv");
-// const userRoutes = require("./routes/userRoutes");
+const { chats } = require("./data/data");
+const connectDB = require("./config/db");
+const colors = require("colors");
+const userRoutes = require("./routes/userRoutes");
 // const chatRoutes = require("./routes/chatRoutes");
 // const messageRoutes = require("./routes/messageRoutes");
 // const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 // const path = require("path");
 
 dotenv.config();
-// connectDB();
+connectDB();
 const app = express();
-app.listen(88, console.log("Server running on port 88"));
+app.listen(88, console.log("Server running on port ${PORT}".yellow.bold));
 // app.use(express.json()); // to accept json data
 
-app.get("/", (req, res) => {
-  res.send("API Running!");
-});
+// app.get("/", (req, res) => {
+//   res.send("API Running!");
+// });
 // app.get("/api/chat", (req, res) => {
 //   res.send(chats);
 // });
 
-// app.use("/api/user", userRoutes);
-// app.use("/api/chat", chatRoutes);
-// app.use("/api/message", messageRoutes);
+app.use("/api/user", userRoutes);
+app.use("/api/chat", chatRoutes);
+app.use("/api/message", messageRoutes);
 
 // // --------------------------deployment------------------------------
 
