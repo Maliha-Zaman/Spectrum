@@ -96,3 +96,15 @@
 	color: white;
 	margin: 10px;
 }
+#toggle
+{
+	position: absolute;
+	top: 50%;
+	right: 20px;
+	transform: translateY(-50%);
+	width: 30px;
+	height: 30px;
+	background: url(show.png);
+	background-size: cover;
+	cursor: pointer;
+}
