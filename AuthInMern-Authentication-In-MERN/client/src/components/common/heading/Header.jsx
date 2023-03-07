@@ -12,8 +12,8 @@ const Header = () => {
         <nav className='flexSB'>
           <ul className={click ? "mobile-nav" : "flexSB"} onClick={()=>setClick(false)}>
             <li><Link to="/">Home</Link></li>
-            <li><Link to="/courses">Categories</Link></li>
-            <li><Link to="/pricing">Popular</Link></li>
+            <li><Link to="/stores">Stores</Link></li>
+            {/* <li><Link to="/pricing">Popular</Link></li> */}
             <li><Link to="/about">About us</Link></li>
             <li><Link to="/team">Team</Link></li>
             {/* <li><Link to="/journal">Journal</Link></li> */}

@@ -16,7 +16,7 @@ const Team = () => {
           <TeamCard />
         </div>
       </section>
-      <Awrapper />
+      {/* <Awrapper /> */}
     </>
   )
 }
