@@ -22,7 +22,7 @@ const Hero = () => {
                 </div>
             </div>    
         </section>    
-        <div className="marigin"></div>
+        <div className="marigin"> </div>
     </>
   )
 }
