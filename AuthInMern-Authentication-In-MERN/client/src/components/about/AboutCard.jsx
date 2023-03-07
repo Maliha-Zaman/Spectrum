@@ -12,7 +12,7 @@ const AboutCard = () => {
                     <img src="./images/about.webp" alt="" />
                 </div>
                 <div className="right row">
-                    <Title subtitle='LEARN ANYTHING' title='Benefits About Online Learning Expertise'/>
+                    <Title subtitle='Buy anything' title='About us'/>
                     <div className="items">
                         {homeAbout.map((val)=>(
                             <div className="item flexSB">
@@ -28,7 +28,7 @@ const AboutCard = () => {
                 </div>
             </div>
         </section>
-        <AWrapper />
+        {/* <AWrapper /> */}
     </>
   )
 }

@@ -2,20 +2,20 @@ export const homeAbout = [
     {
       id: 1,
       cover: "https://img.icons8.com/dotty/80/000000/storytelling.png",
-      title: "Online Courses",
-      desc: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+      title: "Online Shopping",
+      desc: "Far far away, behind the word mountains, from Teknaf to Tetulia, Spectrum is ready to serve.",
     },
     {
       id: 1,
       cover: "https://img.icons8.com/ios/80/000000/diploma.png",
-      title: "Earn A Certificates",
-      desc: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+      title: "Get your favourites",
+      desc: "All your favourite items from your favourite social media pages together to serve you through Spectrum.",
     },
     {
       id: 1,
       cover: "https://img.icons8.com/ios/80/000000/athlete.png",
-      title: "Learn with Expert",
-      desc: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+      title: "Get your exposure",
+      desc: "If you have a social media business but do not get much exposure, join us to get known by everyone!",
     },
   ]
   export const awrapper = [
