@@ -3,6 +3,8 @@ import Main from "./components/Main";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import EmailVerify from "./components/EmailVerify";
+import ForgotPassword from "./components/ForgotPassword";
+import PasswordReset from "./components/PasswordReset";
 import Home from "./components/home/Home";
 import About from "./components/about/About";
 import Team from "./components/team/Team";
@@ -18,6 +20,8 @@ function App() {
 			<Route path="/signup" exact element={<Signup />} />
 			<Route path="/login" exact element={<Login />} />
 			<Route path="/users/:id/verify/:token" element={<EmailVerify />} />
+			<Route path="/forgot-password" element={<ForgotPassword />} />
+			<Route path="/password-reset/:id/:token" element={<PasswordReset/>} />
 			<Route path="/" exact element={<Home />} />
 			<Route path="/about" exact element={<About />} />
 			<Route path="/team" exact element={<Team />} />
