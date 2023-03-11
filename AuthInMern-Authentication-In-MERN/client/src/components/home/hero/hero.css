@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 .hero {
     background-image: url("../../../../public/images/back.jpg");
     background-size: cover;
@@ -10,11 +16,12 @@
     height: 100vh;
     padding-top: 20%;
     padding-right: 50px;
-    color: #fff;
+    color: black;
+   
 }
 
 .hero #heading h3{
-    color: #fff;
+    color: Black;
 }
 .hero #heading{
     text-align: left;

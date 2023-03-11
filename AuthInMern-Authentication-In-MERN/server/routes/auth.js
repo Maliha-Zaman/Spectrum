@@ -5,6 +5,7 @@ const crypto = require("crypto");
 const sendEmail = require("../utils/sendEmail");
 const bcrypt = require("bcrypt");
 const Joi = require("joi");
+
 // const passport = require("passport");
 
 router.get("/login/success", (req, res) => {
@@ -26,7 +27,7 @@ router.get("/login/failed", (req, res) => {
   });
 });
 
-//router.get("/google", passport.authenticate("google", ["profile", "email"]));
+router.get("/google", passport.authenticate("google", ["profile", "email"]));
 
 // router.get(
 // 	"/google/callback",

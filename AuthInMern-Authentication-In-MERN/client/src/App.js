@@ -8,7 +8,7 @@ import PasswordReset from "./components/PasswordReset";
 import Home from "./components/home/Home";
 import About from "./components/about/About";
 import Team from "./components/team/Team";
-import Header from './components/common/heading/Header';
+
 import './App.css';
 function App() {
 	const user = localStorage.getItem("token");

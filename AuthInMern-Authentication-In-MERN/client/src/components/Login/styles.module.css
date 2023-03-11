@@ -12,10 +12,14 @@
     padding-right: 50px;
     color: #fff;
 } */
+.All {
+}
 .login_container {
 	width: 100%;
 	min-height: 100vh;
 	/* background-color: red; */
+	background-image: url(./Login.jpg);
+	background-size: cover;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -121,4 +125,11 @@
 	background: url(show.png);
 	background-size: cover;
 	cursor: pointer;
+}
+
+
+.homebutton {
+	margin-top: -150px;
+
+	margin-bottom: 20px;
 }

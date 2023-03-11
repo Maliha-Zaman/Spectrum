@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
+import Header from "../common/heading/Header";
 
 const Signup = () => {
 	const [data, setData] = useState({
@@ -35,6 +36,8 @@ const Signup = () => {
 	};
 
 	return (
+		<>
+      
 		<div className={styles.signup_container}>
 			<div className={styles.signup_form_container}>
 				<div className={styles.left}>
@@ -44,10 +47,16 @@ const Signup = () => {
 							Sign in
 						</button>
 					</Link>
+					<Link to="/">
+						<button type="button" className={styles.white_btn}>
+							Home
+						</button>
+					</Link>
 				</div>
 				<div className={styles.right}>
 					<form className={styles.form_container} onSubmit={handleSubmit}>
 						<h1>Create Account</h1>
+						<br/>
 						<input
 							type="text"
 							placeholder="First Name"
@@ -56,7 +65,7 @@ const Signup = () => {
 							value={data.firstName}
 							required
 							className={styles.input}
-						/>
+							/>
 						<input
 							type="text"
 							placeholder="Last Name"
@@ -65,7 +74,7 @@ const Signup = () => {
 							value={data.lastName}
 							required
 							className={styles.input}
-						/>
+							/>
 						<input
 							type="email"
 							placeholder="Email"
@@ -74,7 +83,7 @@ const Signup = () => {
 							value={data.email}
 							required
 							className={styles.input}
-						/>
+							/>
 						<input
 							type="password"
 							placeholder="Password"
@@ -83,9 +92,10 @@ const Signup = () => {
 							value={data.password}
 							required
 							className={styles.input}
-						/>
+							/>
 						{error && <div className={styles.error_msg}>{error}</div>}
 						{msg && <div className={styles.success_msg}>{msg}</div>}
+						<br/>
 						<button type="submit" className={styles.green_btn}>
 							Sign Up
 						</button>
@@ -93,6 +103,8 @@ const Signup = () => {
 				</div>
 			</div>
 		</div>
+		
+		</>
 	);
 };
 

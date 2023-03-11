@@ -101,9 +101,9 @@ p{
 }
 
 .back {
-  background-image: url("../public/images/back.webp");
+  /* background-image: url("../public/images/back.webp");
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: fixed; */
   position: absolute;
   top: 0;
   left: 0;
@@ -112,7 +112,7 @@ p{
   height: 100vh;
   padding-top: 30%;
   padding-right: 50px;
-  color: #fff;
+  color: black;
   text-align: center;
 }
 

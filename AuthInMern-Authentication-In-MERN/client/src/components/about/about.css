@@ -47,7 +47,7 @@
   }
   /*----------awrapper------------*/
    .awrapper {
-    background-image: url("../../../public/images/awrapper.webp");
+    background-image: url("../../../public/images/online-shopping-shopping-cart-placed-alongside-notebook-blue.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -82,4 +82,9 @@
       height: 50vh;
     }
   }   
+  .back{
+    background-image: url("./online-shopping-shopping-cart-placed-alongside-notebook-blue.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+  }
 
