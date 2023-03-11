@@ -1,4 +1,4 @@
-import {Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import Main from "./components/Main";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
@@ -9,10 +9,11 @@ import Home from "./components/home/Home";
 import About from "./components/about/About";
 import Team from "./components/team/Team";
 import Store from "./components/stores/Stores";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
-import './App.css';
+import "./App.css";
 function App() {
-	const user = localStorage.getItem("token");
+  const user = localStorage.getItem("token");
 
 	return (
 
