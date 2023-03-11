@@ -8,6 +8,7 @@ import PasswordReset from "./components/PasswordReset";
 import Home from "./components/home/Home";
 import About from "./components/about/About";
 import Team from "./components/team/Team";
+import Store from "./components/stores/Stores";
 
 import './App.css';
 function App() {
@@ -18,6 +19,7 @@ function App() {
 		<Routes>
 			{user && <Route path="/" exact element={<Main />} />}
 			<Route path="/signup" exact element={<Signup />} />
+			<Route path="/stores" exact element={<Store />} />
 			<Route path="/login" exact element={<Login />} />
 			<Route path="/users/:id/verify/:token" element={<EmailVerify />} />
 			<Route path="/forgot-password" element={<ForgotPassword />} />
