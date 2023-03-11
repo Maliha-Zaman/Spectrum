@@ -20,7 +20,7 @@ const Header = () => {
             {/* <li><Link to="/contact">Contact</Link></li> */}
           </ul>
           <div className="start">
-            <div className="button">GET CERTIFICATE</div>
+            <div className="button"></div>
           </div>
           <button className='toggle' onClick={()=>setClick(!click)}>
             {click ? <div><FaTimes/></div> : <div><FaBars /></div>}

@@ -5,7 +5,7 @@ const crypto = require("crypto");
 const sendEmail = require("../utils/sendEmail");
 const bcrypt = require("bcrypt");
 const Joi = require("joi");
-const passport = require("passport");
+
 
 router.get("/login/success", (req, res) => {
 	if (req.user) {
@@ -26,15 +26,15 @@ router.get("/login/failed", (req, res) => {
 	});
 });
 
-router.get("/google", passport.authenticate("google", ["profile", "email"]));
+// router.get("/google", passport.authenticate("google", ["profile", "email"]));
 
-router.get(
-	"/google/callback",
-	passport.authenticate("google", {
-		successRedirect: process.env.CLIENT_URL,
-		failureRedirect: "/login/failed",
-	})
-);
+// router.get(
+// 	"/google/callback",
+// 	passport.authenticate("google", {
+// 		successRedirect: process.env.CLIENT_URL,
+// 		failureRedirect: "/login/failed",
+// 	})
+// );
 
 router.get("/logout", (req, res) => {
 	req.logout();

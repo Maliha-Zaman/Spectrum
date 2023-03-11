@@ -14,20 +14,7 @@ mongoose.connect(`mongodb+srv://nazia:Oishee2002@cluster0.jntxsyg.mongodb.net/te
     console.log("Wrong")
 })
 
-// mongoose.set('strictQuery', false);
-// module.exports = () => {
-// 	const connectionParams = {
-// 		useNewUrlParser: true,
-// 		useUnifiedTopology: true,
-// 	};
-// 	try {
-// 		mongoose.connect(process.env.DB, connectionParams);
-// 		console.log("Connected to database successfully");
-// 	} catch (error) {
-// 		console.log(error);
-// 		console.log("Could not connect database!");
-// 	}
-// };
+
 const SellUser=require("./views/model/user")
 app.set("view engine","ejs")
 app.get("/",(req,res)=>{

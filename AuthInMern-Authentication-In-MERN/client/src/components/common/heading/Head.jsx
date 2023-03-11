@@ -8,18 +8,14 @@ const Head = () => {
             <div className="logo">
                 <div className='imagelogo'>
                 </div>
-                {/* <span>ONLINE SHOP TO GET IT ALL</span> */}
+
             </div>
             <div className="buttons">
+              <a href=''><button className='sell'>Become a seller</button></a>
               <a href='/login'><button className='login'>Log In</button></a>
               <a href='/signup'><button className='signup'>Create Account</button></a>
             </div>
-            {/* <div className='social'>
-                <div className="icon"><FaFacebook /></div>
-                <div className="icon"><FaYoutube /></div>
-                <div className="icon"><FaInstagram /></div>
-                <div className="icon"><FaTwitter /></div>
-            </div> */}
+
         </div>
       </section>
     </>

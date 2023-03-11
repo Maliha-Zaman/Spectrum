@@ -16,7 +16,7 @@
 .white_btn {
 	border: none;
 	outline: none;
-	padding: 12px 0;
+	padding: 10px 0;
 	background-color: white;
 	border-radius: 20px;
 	width: 120px;
@@ -24,4 +24,5 @@
 	font-size: 14px;
 	cursor: pointer;
 	margin-right: 20px;
+	margin-bottom: 22px;
 }
