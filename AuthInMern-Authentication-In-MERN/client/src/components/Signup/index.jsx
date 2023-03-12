@@ -3,13 +3,14 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 import Header from "../common/heading/Header";
-
+import { useEffect } from "react/cjs/react.production.min";
 const Signup = () => {
   const [data, setData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     password: "",
+    Confirmpassword: "",
   });
   const [error, setError] = useState("");
   const [msg, setMsg] = useState("");
@@ -17,8 +18,27 @@ const Signup = () => {
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
   };
+  // function getInputValue() {
+  //   let inputValue = document.getElementById("textInput1").value;
+  //   document.getElementById("output").innerHTML = inputValue;
+  // }
+//   function validatePassword() {
+//     let inputValue = document.getElementById("password").value;
+//       let inputValue2 = document.getElementById("Confirmpassword").value;
 
+//     if (inputValue !== inputValue2) {
+//       return false;
+//     }
+//     return true;
+//   }
+// const isValid = validatePassword();
+// if (!isValid) {
+//   // return res.status(400).send("Passwords do not match");
+//           throw new Error("Passwords must be same");
+
+// }
   const handleSubmit = async (e) => {
+ 
     e.preventDefault();
     try {
       const url = "http://localhost:8000/api/users";
@@ -67,6 +87,7 @@ const Signup = () => {
               />
               <input
                 type="text"
+                id="password"
                 placeholder="Last Name"
                 name="lastName"
                 onChange={handleChange}
@@ -76,6 +97,7 @@ const Signup = () => {
               />
               <input
                 type="email"
+                id="Confirmpassword"
                 placeholder="Email"
                 name="email"
                 onChange={handleChange}
@@ -89,6 +111,15 @@ const Signup = () => {
                 name="password"
                 onChange={handleChange}
                 value={data.password}
+                required
+                className={styles.input}
+              />
+              <input
+                type="password"
+                placeholder="Confirm Password"
+                name="Confirmpassword"
+                onChange={handleChange}
+                value={data.Confirmpassword}
                 required
                 className={styles.input}
               />
