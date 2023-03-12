@@ -1,9 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
+// import { Input } from "@chakra-ui/react";
 import Header from "../common/heading/Header";
-import { useEffect } from "react/cjs/react.production.min";
+import { FaChalkboard } from "react-icons/fa";
 const Signup = () => {
   const [data, setData] = useState({
     firstName: "",
@@ -18,27 +19,8 @@ const Signup = () => {
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
   };
-  // function getInputValue() {
-  //   let inputValue = document.getElementById("textInput1").value;
-  //   document.getElementById("output").innerHTML = inputValue;
-  // }
-//   function validatePassword() {
-//     let inputValue = document.getElementById("password").value;
-//       let inputValue2 = document.getElementById("Confirmpassword").value;
 
-//     if (inputValue !== inputValue2) {
-//       return false;
-//     }
-//     return true;
-//   }
-// const isValid = validatePassword();
-// if (!isValid) {
-//   // return res.status(400).send("Passwords do not match");
-//           throw new Error("Passwords must be same");
-
-// }
   const handleSubmit = async (e) => {
- 
     e.preventDefault();
     try {
       const url = "http://localhost:8000/api/users";
@@ -87,7 +69,6 @@ const Signup = () => {
               />
               <input
                 type="text"
-                id="password"
                 placeholder="Last Name"
                 name="lastName"
                 onChange={handleChange}
@@ -97,7 +78,6 @@ const Signup = () => {
               />
               <input
                 type="email"
-                id="Confirmpassword"
                 placeholder="Email"
                 name="email"
                 onChange={handleChange}
@@ -106,7 +86,7 @@ const Signup = () => {
                 className={styles.input}
               />
               <input
-                type="password"
+                type="PasswordInputType"
                 placeholder="Password"
                 name="password"
                 onChange={handleChange}
@@ -114,8 +94,9 @@ const Signup = () => {
                 required
                 className={styles.input}
               />
+
               <input
-                type="password"
+                type="PasswordInputType"
                 placeholder="Confirm Password"
                 name="Confirmpassword"
                 onChange={handleChange}
@@ -123,6 +104,7 @@ const Signup = () => {
                 required
                 className={styles.input}
               />
+
               {error && <div className={styles.error_msg}>{error}</div>}
               {msg && <div className={styles.success_msg}>{msg}</div>}
               <br />
