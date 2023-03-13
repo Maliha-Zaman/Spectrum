@@ -73,16 +73,15 @@ header ul li a:hover {
     margin-bottom: 20px;
   }
 
-    .toggle {
-        display: block;
-        background-color: #1eb2a6;
-        color: #fff;
-        font-size: 30px;
-        position:absolute;
-        right: 50px;
-        top: -20px;
-        
-    }
+  .toggle {
+    display: block;
+    background-color: #1eb2a6;
+    color: #fff;
+    font-size: 30px;
+    position: absolute;
+    right: 50px;
+    top: -20px;
+  }
 
   .mobile-nav {
     position: absolute;

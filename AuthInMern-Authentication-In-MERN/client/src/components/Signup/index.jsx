@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+//import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
@@ -15,7 +16,14 @@ const Signup = () => {
   });
   const [error, setError] = useState("");
   const [msg, setMsg] = useState("");
+  // const [passwordShown, setPasswordShown] = useState(false);
 
+  // // Password toggle handler
+  // const togglePassword = () => {
+  //   // When the handler is invoked
+  //   // inverse the boolean state of passwordShown
+  //   setPasswordShown(!passwordShown);
+  // };
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
   };
@@ -85,18 +93,21 @@ const Signup = () => {
                 required
                 className={styles.input}
               />
+              <div>
+                <input
+                  type="Password"
+                  placeholder="Password"
+                  name="password"
+                  onChange={handleChange}
+                  value={data.password}
+                  required
+                  className={styles.input}
+                />
+                {/* <input type={passwordShown ? "text" : "password"} /> */}
+                {/* <button onClick={togglePassword}>Show Password</button> */}
+              </div>
               <input
-                type="PasswordInputType"
-                placeholder="Password"
-                name="password"
-                onChange={handleChange}
-                value={data.password}
-                required
-                className={styles.input}
-              />
-
-              <input
-                type="PasswordInputType"
+                type="Password"
                 placeholder="Confirm Password"
                 name="Confirmpassword"
                 onChange={handleChange}
@@ -104,7 +115,8 @@ const Signup = () => {
                 required
                 className={styles.input}
               />
-
+              {/*  */}
+              {/*  */}
               {error && <div className={styles.error_msg}>{error}</div>}
               {msg && <div className={styles.success_msg}>{msg}</div>}
               <br />
