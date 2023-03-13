@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+//import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
@@ -94,7 +95,6 @@ const Signup = () => {
                 required
                 className={styles.input}
               />
-
               <input
                 type="PasswordInputType"
                 placeholder="Confirm Password"
@@ -104,7 +104,8 @@ const Signup = () => {
                 required
                 className={styles.input}
               />
-
+              {/*  */}
+              {/*  */}
               {error && <div className={styles.error_msg}>{error}</div>}
               {msg && <div className={styles.success_msg}>{msg}</div>}
               <br />
