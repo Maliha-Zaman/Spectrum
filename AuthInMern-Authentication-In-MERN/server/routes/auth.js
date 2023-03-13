@@ -41,7 +41,12 @@ router.get("/logout", (req, res) => {
   req.logout();
   res.redirect(process.env.CLIENT_URL);
 });
-
+// function validatePassword(password, confirmPassword) {
+//   if (password !== confirmPassword) {
+//     return false;
+//   }
+//   return true;
+// }
 module.exports = router;
 router.post("/", async (req, res) => {
   try {
@@ -59,7 +64,11 @@ router.post("/", async (req, res) => {
     );
     if (!validPassword)
       return res.status(401).send({ message: "Invalid Email or Password" });
-
+    // const isValid = validatePassword();
+    // if (!isValid) {
+    //   return res.status(400).send("Passwords do not match");
+    //   //throw new Error("Passwords must be same");
+    // }
     if (!user.verified) {
       let token = await Token.findOne({ userId: user._id });
       if (!token) {

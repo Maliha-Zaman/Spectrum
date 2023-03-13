@@ -1,15 +1,17 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
+// import { Input } from "@chakra-ui/react";
 import Header from "../common/heading/Header";
-
+import { FaChalkboard } from "react-icons/fa";
 const Signup = () => {
   const [data, setData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     password: "",
+    Confirmpassword: "",
   });
   const [error, setError] = useState("");
   const [msg, setMsg] = useState("");
@@ -84,7 +86,7 @@ const Signup = () => {
                 className={styles.input}
               />
               <input
-                type="password"
+                type="PasswordInputType"
                 placeholder="Password"
                 name="password"
                 onChange={handleChange}
@@ -92,6 +94,17 @@ const Signup = () => {
                 required
                 className={styles.input}
               />
+
+              <input
+                type="PasswordInputType"
+                placeholder="Confirm Password"
+                name="Confirmpassword"
+                onChange={handleChange}
+                value={data.Confirmpassword}
+                required
+                className={styles.input}
+              />
+
               {error && <div className={styles.error_msg}>{error}</div>}
               {msg && <div className={styles.success_msg}>{msg}</div>}
               <br />
