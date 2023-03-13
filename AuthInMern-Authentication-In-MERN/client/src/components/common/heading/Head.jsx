@@ -16,7 +16,7 @@ const Head = () => {
             <div className="imagelogo"></div>
           </div>
           <div className="buttons">
-            <a href="">
+            <a href="/form">
               <button className="sell">Become a seller</button>
             </a>
             <a href="/login">

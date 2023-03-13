@@ -9,6 +9,7 @@ import Home from "./components/home/Home";
 import About from "./components/about/About";
 import Team from "./components/team/Team";
 import Store from "./components/stores/Stores";
+import Form from "./components/form/Form";
 // import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 import "./App.css";
@@ -21,6 +22,7 @@ function App() {
 			<Route path="/signup" exact element={<Signup />} />
 			<Route path="/stores" exact element={<Store />} />
 			<Route path="/login" exact element={<Login />} />
+			<Route path="/form" exact element={<Form />} />
 			<Route path="/users/:id/verify/:token" element={<EmailVerify />} />
 			<Route path="/forgot-password" element={<ForgotPassword />} />
 			<Route path="/password-reset/:id/:token" element={<PasswordReset/>} />
