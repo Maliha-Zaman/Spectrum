@@ -13,7 +13,7 @@ const Form = () => {
   const [idimage, setIdimage] = useState("");
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault();//
 
     Axios.post("http://localhost:8000/insert", {
       storename: storename,
