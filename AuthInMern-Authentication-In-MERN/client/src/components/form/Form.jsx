@@ -1,6 +1,8 @@
 import "./form.css";
 import React, { useState } from "react";
 import Axios from "axios";
+import Header from "../common/heading/Header";
+import Footer from "../footer/Footer";
 const Form = () => {
     const [storename, setStorename] = useState("");
     const [platformlink, setPlatformlink] = useState("");
@@ -28,10 +30,16 @@ const Form = () => {
       });
     };
     return (
+      <>
+      <Header />
       <form onSubmit={handleSubmit} className="form" autocomplete="off">
+        <div className="fb">
+
+        
         <div className="form-header">
           <h2 className="form-heading">Become a seller</h2>
           <p className="form-subheading">It's quick and easy.</p>
+          <br/>
         </div>
   
         <div className="form-body">
@@ -45,7 +53,7 @@ const Form = () => {
               onChange={(e) => {
                 setStorename(e.target.value);
               }}
-            />
+              />
   
             <input
               type="text"
@@ -56,7 +64,7 @@ const Form = () => {
               onChange={(e) => {
                 setPlatformlink(e.target.value);
               }}
-            />
+              />
           </fieldset>
   
           <fieldset>
@@ -69,7 +77,7 @@ const Form = () => {
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
-            />
+              />
             {/* <input type="email" placeholder="Email address" name="email" required /> */}
           </fieldset>
           <fieldset>
@@ -82,7 +90,7 @@ const Form = () => {
               onChange={(e) => {
                 setLogoimage(e.target.value);
               }}
-            />
+              />
           </fieldset>
   
           <fieldset className="input-container">
@@ -97,7 +105,7 @@ const Form = () => {
               onChange={(e) => {
                 setPhone(e.target.value);
               }}
-            />
+              />
           </fieldset>
   
           <fieldset className="input-container">
@@ -110,7 +118,7 @@ const Form = () => {
               onChange={(e) => {
                 setDivision(e.target.value);
               }}
-            />
+              />
   
           </fieldset>
           <fieldset className="input-container">
@@ -125,7 +133,7 @@ const Form = () => {
               onChange={(e) => {
                 setAddress(e.target.value);
               }}
-            />
+              />
           </fieldset>
           <fieldset className="input-container">
             {/* <label for="dob">Date of birth</label> */}
@@ -139,7 +147,7 @@ const Form = () => {
               onChange={(e) => {
                 setPhone(e.target.value);
               }}
-            />
+              />
           </fieldset>
           <fieldset className="input-container">
             {/* <label for="dob">Date of birth</label> */}
@@ -153,7 +161,7 @@ const Form = () => {
               onChange={(e) => {
                 setBankaccount(e.target.value);
               }}
-            />
+              />
           </fieldset>
           <fieldset className="input-container">
             {/* <label for="dob">Date of birth</label> */}
@@ -167,7 +175,7 @@ const Form = () => {
               onChange={(e) => {
                 setIdimage(e.target.value);
               }}
-            />
+              />
           </fieldset>
   
           <div className="button-container">
@@ -176,7 +184,10 @@ const Form = () => {
             </button>
           </div>
         </div>
+        </div>
       </form>
+      <Footer />
+      </>
     );
 }
 

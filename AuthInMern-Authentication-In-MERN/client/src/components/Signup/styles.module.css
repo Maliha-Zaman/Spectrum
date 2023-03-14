@@ -60,7 +60,10 @@
 
 .input {
   outline: none;
-  border: none;
+  /* border: none; */
+  border-width: 0.005cm;
+  border-color: #1eb2a6;
+  box-shadow: 2px #1eb2a6;
   width: 370px;
   padding: 15px;
   border-radius: 10px;
@@ -75,6 +78,16 @@
   margin: 5px 0;
   font-size: 14px;
   background-color: #f34646;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+}
+.success_msg {
+  width: 370px;
+  padding: 15px;
+  margin: 5px 0;
+  font-size: 14px;
+  background-color: #1eb2a6;
   color: white;
   border-radius: 5px;
   text-align: center;
