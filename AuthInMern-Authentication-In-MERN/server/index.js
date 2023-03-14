@@ -58,7 +58,7 @@ app.post("/insert", async (req, res) => {
     if (user)
       return res
         .status(409)
-        .send({ message: "User with given email already Exist!" });
+        .send({ message: "Seller with given email already Exist!" });
     //return res.json({ error: "BLAHHHHH" });
     // if (seller) {
     //   return res.status(417).json({

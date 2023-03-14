@@ -37,6 +37,9 @@ const Signup = () => {
       const url = "http://localhost:8000/api/users";
       const { data: res } = await axios.post(url, data);
       setMsg(res.message);
+      setTimeout(() => {
+        setError("");
+      }, 10000);
     } catch (error) {
       if (
         error.response &&
@@ -45,6 +48,9 @@ const Signup = () => {
       ) {
         setError(error.response.data.message);
       }
+      setTimeout(() => {
+        setError("");
+      }, 10000);
     }
   };
 
