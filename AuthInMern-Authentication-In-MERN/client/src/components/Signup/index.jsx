@@ -115,6 +115,8 @@ const Signup = () => {
               required
               className={styles.input}
             />
+            <div className="tog">
+
             <input
               type="password"
               placeholder="Confirm Password"
@@ -123,10 +125,11 @@ const Signup = () => {
               value={data.Confirmpassword}
               required
               className={styles.input}
-            />
+              />
             <span onClick={handleToggle}>
               <Icon icon={icon} size={25} />{" "}
             </span>
+            </div>
 
             {error && <div className={styles.error_msg}>{error}</div>}
             {msg && <div className={styles.success_msg}>{msg}</div>}
