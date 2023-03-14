@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Head from './Head'
 import './header.css'
 import { Link } from "react-router-dom"
-import { FaFacebook, FaInstagram, FaTwitter, FaYoutube, FaTimes, FaBars } from "react-icons/fa"
+import {  FaTimes, FaBars } from "react-icons/fa"
 const Header = () => {
   const [click, setClick] = useState(false)
   return (

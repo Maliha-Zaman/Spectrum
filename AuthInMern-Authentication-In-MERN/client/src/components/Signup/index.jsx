@@ -2,6 +2,9 @@ import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
+import{Icon} from 'react-icons-kit';
+import {eyeOff} from 'react-icons-kit/feather/eyeOff';
+import {eye} from 'react-icons-kit/feather/eye'
 
 const Signup = () => {
 	const [data, setData] = useState({
@@ -34,6 +37,18 @@ const Signup = () => {
 		}
 	};
 
+  const [type,setType]=useState('password');
+  const [icon,setIcon]=useState(eyeOff);
+   const handleToggle=()=>{    
+    if(type==='password'){
+      setIcon(eye);      
+      setType('text');
+    }
+    else{
+      setIcon(eyeOff);     
+      setType('password');
+    }
+  }
 	return (
 		<div className={styles.signup_container}>
 			<div className={styles.signup_form_container}>
@@ -75,8 +90,10 @@ const Signup = () => {
 							required
 							className={styles.input}
 						/>
+						
+						
 						<input
-							type="password"
+							type={type}
 							placeholder="Password"
 							name="password"
 							onChange={handleChange}
@@ -84,6 +101,9 @@ const Signup = () => {
 							required
 							className={styles.input}
 						/>
+						<span onClick={handleToggle}><Icon icon={icon} size={25} /> </span>
+					
+						
 						{error && <div className={styles.error_msg}>{error}</div>}
 						{msg && <div className={styles.success_msg}>{msg}</div>}
 						<button type="submit" className={styles.green_btn}>

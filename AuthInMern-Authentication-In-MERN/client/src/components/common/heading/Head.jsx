@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaFacebook, FaInstagram, FaTwitter, FaYoutube, FaTimes, FaBars } from "react-icons/fa"
+
 const Head = () => {
   return (
     <>
