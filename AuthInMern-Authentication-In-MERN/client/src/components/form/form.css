@@ -1,4 +1,3 @@
-
 *,
 *::before,
 *::after {
@@ -34,24 +33,44 @@ fieldset {
   border: none;
 }
 
- input {
+input {
   display: block;
-  /* border: none; */
+  border: none;
   font-size: 0.9rem;
   padding: 12px;
 }
-/* 
- input:not([type="radio"]) {
+
+input:not([type="radio"]) {
   width: 100%;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
   background: rgba(238, 238, 239, 0.5);
   border-radius: 5px;
 }
 
-input:not([type="radio"]):focus {
+.email:not([type="radio"]):focus {
   outline: none;
   box-shadow: 0 0 0 3px #1877f2;
-}  */
+}
+.logoimage {
+  display: block;
+  /* border: none; */
+  font-size: 0.9rem;
+  padding: 12px;
+}
+.logoimage:not([type="radio"]) {
+  width: 100%;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+  background: rgba(238, 238, 239, 0.5);
+  border-radius: 5px;
+}
+
+input {
+  display: block;
+  /* border: none; */
+  font-size: 0.9rem;
+  padding: 12px;
+}
+
 
 fieldset:invalid ~ fieldset {
   display: none;
@@ -173,4 +192,27 @@ fieldset:invalid ~ fieldset {
   box-shadow: 2px 2px 2px 2px #1eb2a6;
   
   border-radius: 1cm;
+}
+
+/*  */
+
+.error_msg {
+  width: 370px;
+  padding: 15px;
+  margin: 5px 0;
+  font-size: 14px;
+  background-color: #f34646;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+}
+.success_msg {
+  width: 370px;
+  padding: 15px;
+  margin: 5px 0;
+  font-size: 14px;
+  background-color: #3bb19b;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
 }
