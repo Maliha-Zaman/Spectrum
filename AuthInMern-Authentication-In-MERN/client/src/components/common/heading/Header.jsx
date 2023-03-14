@@ -45,10 +45,10 @@ const Header = () => {
             {/* <li><Link to="/journal">Journal</Link></li> */}
             {/* <li><Link to="/contact">Contact</Link></li> */}
           </ul>
-          <form action="">
+          {/* <form action="">
             <input type="search" placeholder="Search here ..." />
             <i class="fa fa-search"></i>
-          </form>
+          </form> */}
           <div className="start">
             <div className="button"></div>
           </div>
