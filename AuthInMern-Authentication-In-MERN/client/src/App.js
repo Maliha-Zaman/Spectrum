@@ -10,7 +10,7 @@ import About from "./components/about/About";
 import Team from "./components/team/Team";
 import Store from "./components/stores/Stores";
 import Form from "./components/form/Form";
-// import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
 
 import "./App.css";
 function App() {
