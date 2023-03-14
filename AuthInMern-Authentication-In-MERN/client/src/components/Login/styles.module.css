@@ -1,21 +1,9 @@
-/* .log {
-	background-image: url("F:\4th Semester\SPL II\Spectrum\AuthInMern-Authentication-In-MERN\client\public\images\back.jpg");
-    background-size: cover;
-    background-attachment: fixed;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    width: 100%;
-    height: 100vh;
-    padding-top: 20%;
-    padding-right: 50px;
-    color: #fff;
-} */
 .login_container {
 	width: 100%;
 	min-height: 100vh;
 	/* background-color: red; */
+	background-image: url(./Login.jpg);
+	background-size: cover;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -121,4 +109,11 @@
 	background: url(show.png);
 	background-size: cover;
 	cursor: pointer;
+}
+
+
+.homebutton {
+	margin-top: -150px;
+
+	margin-bottom: 20px;
 }

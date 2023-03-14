@@ -255,7 +255,7 @@ export const homeAbout = [
       work: "200042114",
     },
     {
-      cover: "./images/team/t3.webp",
+      cover: "./images/team/t3.jpg",
       name: "Nazia Karim Khan Oishee",
       work: "200042137",
     },

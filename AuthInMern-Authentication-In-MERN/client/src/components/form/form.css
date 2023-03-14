@@ -1,0 +1,234 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+html {
+  font-family: Helvetica, Arial, sans-serif;
+  color: #1c1e21;
+}
+body {
+  background: #f0f2f5;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: rgb(56, 88, 152);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  display: block;
+  cursor: pointer;
+}
+
+fieldset {
+  border: none;
+}
+/* comment this out and try */
+/* .storeName {
+  display: block;
+  border: none;
+  font-size: 0.9rem;
+  padding: 12px;
+}
+.storeName:not([type="radio"]) {
+  width: 100%;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+  background: rgba(238, 238, 239, 0.5);
+  border-radius: 5px;
+}
+
+.storeName:not([type="radio"]):focus {
+  outline: none;
+  box-shadow: 0 0 0 3px #1877f2;
+}
+.email {
+  display: block;
+  border: none;
+  font-size: 0.9rem;
+  padding: 12px;
+}
+.email:not([type="radio"]) {
+  width: 100%;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+  background: rgba(238, 238, 239, 0.5);
+  border-radius: 5px;
+}
+
+.email:not([type="radio"]):focus {
+  outline: none;
+  box-shadow: 0 0 0 3px #1877f2;
+}
+.logoimage {
+  display: block;
+  border: none;
+  font-size: 0.9rem;
+  padding: 12px;
+}
+.logoimage:not([type="radio"]) {
+  width: 100%;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+  background: rgba(238, 238, 239, 0.5);
+  border-radius: 5px;
+}
+
+.logoimage:not([type="radio"]):focus {
+  outline: none;
+  box-shadow: 0 0 0 3px #1877f2;
+} */
+/* comment the nesxt three input type css */
+input {
+  display: block;
+  border: none;
+  font-size: 0.9rem;
+  padding: 12px;
+}
+
+input:not([type="radio"]) {
+  width: 100%;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+  background: rgba(238, 238, 239, 0.5);
+  border-radius: 5px;
+}
+
+input:not([type="radio"]):focus {
+  outline: none;
+  box-shadow: 0 0 0 3px #1877f2;
+}
+
+fieldset:invalid ~ fieldset {
+  display: none;
+}
+
+.logo {
+  height: 69px;
+}
+
+.main-heading {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0.25em;
+  font-size: 2.5em;
+  margin-bottom: 0.25em;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto 0.5em;
+  padding: 0.5em 0;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px -4px rgb(56, 88, 152, 0.05);
+}
+
+.form > * {
+  padding: 1em 1.5em;
+}
+
+.form:invalid button[type="submit"] {
+  /* user-select: none; */
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.form-header {
+  padding: 1em initial;
+  box-shadow: 0 2px 0 -1px #dadde1;
+}
+
+.form-header > * + * {
+  margin-top: 0.25em;
+}
+
+.form-heading {
+  font-weight: 800;
+  font-size: 2em;
+}
+
+.form-subheading {
+  opacity: 0.65;
+}
+
+.form-body {
+  display: flex;
+  flex-direction: column;
+}
+.form-body > * + * {
+  margin-top: 1rem;
+}
+
+.fluid-row {
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); */
+  grid-auto-columns: minmax(0, 1fr);
+  grid-auto-flow: column;
+  gap: 1em;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container > label {
+  font-size: 0.8em;
+  margin-bottom: 4px;
+  opacity: 0.75;
+}
+
+.radio-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  padding: 12px;
+  line-height: 0;
+}
+
+.radio-group > input {
+}
+
+.button {
+  font-size: 1.125rem;
+  font-weight: 700;
+  border-radius: 6px;
+  border: none;
+  padding: 0 2rem;
+  height: 2.25rem;
+  min-width: 194px;
+}
+
+.button-primary {
+  color: white;
+  background: rgb(0, 164, 0);
+}
+
+.terms {
+  font-size: 11px;
+  opacity: 0.75;
+}
+.terms > * + * {
+  margin-top: 1em;
+}
+
+.button-container > * {
+  margin-left: auto;
+  margin-right: auto;
+}

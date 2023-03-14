@@ -35,6 +35,7 @@ const Login = () => {
 				<div className={styles.left}>
 					<form className={styles.form_container} onSubmit={handleSubmit}>
 						<h1>Login to Your Account</h1>
+						<br/>
 						<input
 							type="email"
 							placeholder="Email"
@@ -43,7 +44,7 @@ const Login = () => {
 							value={data.email}
 							required
 							className={styles.input}
-						/>
+							/>
 						<input
 							type="password"
 							placeholder="Password"
@@ -52,11 +53,13 @@ const Login = () => {
 							value={data.password}
 							required
 							className={styles.input}
-						/>
+							/>
+							<br/>
 						<Link to="/forgot-password" style={{alignSelf:"flex-start"}}>
-							<p style={{padding:"0 15px"}}>Forgot Password?</p>
+							<p style={{padding:"0 40px"}}>Forgot Password?</p>
 						</Link>
 						{error && <div className={styles.error_msg}>{error}</div>}
+						<br/>
 						<button type="submit" className={styles.green_btn}>
 							Sign In
 						</button>
@@ -69,9 +72,15 @@ const Login = () => {
 							Sign Up
 						</button>
 					</Link>
+					<Link to="/">
+						<button type="button" className={styles.white_btn}>
+							Home
+						</button>
+					</Link>
 				</div>
 			</div>
 		</div>
+
 	);
 };
 

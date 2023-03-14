@@ -18,7 +18,7 @@ import {
 } from "@chakra-ui/modal";
 import { Tooltip } from "@chakra-ui/tooltip";
 import { BellIcon, ChevronDownIcon } from "@chakra-ui/icons";
-import { Avatar } from "@chakra-ui/avatar";
+import { Avatar } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
@@ -26,8 +26,13 @@ import { useToast } from "@chakra-ui/toast";
 import ChatLoading from "../ChatLoading";
 import { Spinner } from "@chakra-ui/spinner";
 import ProfileModal from "./ProfileModal";
-import NotificationBadge from "react-notification-badge";
-import { Effect } from "react-notification-badge";
+// import NotificationBadge from "react-notification-badge";
+// import { Effect } from "react-notification-badge";
+import {
+  //NotificationContainer,
+  NotificationManager,
+} from "react-notifications";
+
 import { getSender } from "../../config/ChatLogics";
 import UserListItem from "../userAvatar/UserListItem";
 import { ChatState } from "../../Context/ChatProvider";
@@ -147,15 +152,15 @@ function SideDrawer() {
         <div>
           <Menu>
             <MenuButton p={1}>
-              <NotificationBadge
-                count={notification.length}
-                effect={Effect.SCALE}
+              <NotificationManager
+                count={NotificationManager.length} ////////////
+                //effect={Effect.SCALE}
               />
               <BellIcon fontSize="2xl" m={1} />
             </MenuButton>
             <MenuList pl={2}>
-              {!notification.length && "No New Messages"}
-              {notification.map((notif) => (
+              {!NotificationManager.length && "No New Messages"}
+              {NotificationManager.map((notif) => (
                 <MenuItem
                   key={notif._id}
                   onClick={() => {
