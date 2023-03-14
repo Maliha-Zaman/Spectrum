@@ -11,21 +11,32 @@ const Form = () => {
   const [address, setAddress] = useState("");
   const [bankaccount, setBankaccount] = useState("");
   const [idimage, setIdimage] = useState("");
-
-  const handleSubmit = (e) => {
+  const [error, setError] = useState("");
+  const [msg, setMsg] = useState("");
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    Axios.post("http://localhost:8000/insert", {
-      storename: storename,
-      platformlink: platformlink,
-      logoimage: logoimage,
-      email: email,
-      phone: phone,
-      division: division,
-      address: address,
-      bankaccount: bankaccount,
-      idimage: idimage,
-    });
+    try {
+      const { data: res } = await Axios.post("http://localhost:8000/insert", {
+        storename: storename,
+        platformlink: platformlink,
+        logoimage: logoimage,
+        email: email,
+        phone: phone,
+        division: division,
+        address: address,
+        bankaccount: bankaccount,
+        idimage: idimage,
+      });
+      setMsg(res.message);
+    } catch (error) {
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        setError(error.response.data.message);
+      }
+    }
   };
   return (
     <form onSubmit={handleSubmit} className="form" autocomplete="off">
@@ -58,7 +69,6 @@ const Form = () => {
             }}
           />
         </fieldset>
-
         <fieldset>
           <input
             type="email"
@@ -84,7 +94,6 @@ const Form = () => {
             }}
           />
         </fieldset>
-
         <fieldset className="input-container">
           {/* <label for="dob">Date of birth</label> */}
           {/* <input type="date" id="dob" required /> */}
@@ -99,7 +108,6 @@ const Form = () => {
             }}
           />
         </fieldset>
-
         <fieldset className="input-container">
           <input
             type="text"
@@ -168,7 +176,8 @@ const Form = () => {
             }}
           />
         </fieldset>
-
+        {error && <div className="error_msg">{error}</div>}
+        {msg && <div className="success_msg">{msg}</div>}
         <div className="button-container">
           <button type="submit" className="button button-primary">
             Submit{" "}

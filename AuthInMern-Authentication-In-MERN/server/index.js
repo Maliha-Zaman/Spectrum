@@ -50,16 +50,35 @@ app.post("/insert", async (req, res) => {
   });
 
   try {
-    let seller = await demouser.findOne({ email: req.body.email });
-    if (seller)
+    // const { error } = validate(req.body);
+    // if (error)
+    //   return res.status(400).send({ message: error.details[0].message });
+
+    let user = await User.findOne({ email: req.body.email });
+    if (user)
       return res
         .status(409)
-        .send({ message: "Seller with given email already Exist!" });
-
+        .send({ message: "User with given email already Exist!" });
+    //return res.json({ error: "BLAHHHHH" });
+    // if (seller) {
+    //   return res.status(417).json({
+    //     errors: [
+    //       {
+    //         email: seller.email,
+    //         msg: "User already exists",
+    //       },
+    //     ],
+    //   });
+    // }
     await formData.save();
-    res.send("inserted data..");
+    // res.send("inserted data..");
+    res
+      .status(201)
+      .send({ message: "Your information have been submitted successfully." });
   } catch (err) {
+    // console.log(err);
     console.log(err);
+    res.status(500).send({ message: "Internal Server Error" });
   }
 });
 
