@@ -17,8 +17,13 @@ const Signup = () => {
     password: "",
     Confirmpassword: "",
   });
+
   const [error, setError] = useState("");
   const [msg, setMsg] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  //  const [message, setMessage] = useState("");
+
   // const [passwordShown, setPasswordShown] = useState(false);
 
   // // Password toggle handler
@@ -29,18 +34,22 @@ const Signup = () => {
   // };
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
+    // this.setData = " ";
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       const url = "http://localhost:8000/api/users";
       const { data: res } = await axios.post(url, data);
       setMsg(res.message);
       setTimeout(() => {
-        setError("");
-      }, 10000);
+        setMsg("");
+      }, 5000);
+      setLoading(false);
     } catch (error) {
+      setLoading(false);
       if (
         error.response &&
         error.response.status >= 400 &&
@@ -50,7 +59,7 @@ const Signup = () => {
       }
       setTimeout(() => {
         setError("");
-      }, 10000);
+      }, 5000);
     }
   };
 
@@ -145,7 +154,8 @@ const Signup = () => {
             {error && <div className={styles.error_msg}>{error}</div>}
             {msg && <div className={styles.success_msg}>{msg}</div>}
             <button type="submit" className={styles.green_btn}>
-              Sign Up
+              {/* Sign Up */}
+              {loading ? <>Loading..</> : <>Sign Up</>}
             </button>
           </form>
         </div>

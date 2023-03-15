@@ -15,9 +15,13 @@ const Form = () => {
   const [idimage, setIdimage] = useState("");
   const [error, setError] = useState("");
   const [msg, setMsg] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
+
       const { data: res } = await Axios.post("http://localhost:8000/insert", {
         storename: storename,
         platformlink: platformlink,
@@ -31,9 +35,12 @@ const Form = () => {
       });
       setMsg(res.message);
       setTimeout(() => {
-        setError("");
-      }, 10000);
+        setMsg("");
+      }, 5000);
+      setLoading(false);
     } catch (error) {
+      setLoading(false);
+
       if (
         error.response &&
         error.response.status >= 400 &&
@@ -43,7 +50,7 @@ const Form = () => {
       }
       setTimeout(() => {
         setError("");
-      }, 10000);
+      }, 5000);
     }
   };
 
@@ -205,7 +212,8 @@ const Form = () => {
 } */}
             <div className="button-container">
               <button type="submit" className="button button-primary">
-                Submit{" "}
+                {/* Submit{" "} */}
+                {loading ? <>Loading..</> : <>Submit</>}
               </button>
             </div>
           </div>
