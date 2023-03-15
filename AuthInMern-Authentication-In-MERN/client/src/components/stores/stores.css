@@ -22,10 +22,10 @@
 }
 
 .image_container{
-    background-image: url(./Login.jpg);
+    background-image: url(./aarong.webp);
     background-size: cover;
     overflow: hidden;
-    height: 180px;
+    height: 300px;
 }
 
 .card_content {

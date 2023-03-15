@@ -84,6 +84,7 @@ const Signup = () => {
         <div className={styles.right}>
           <form className={styles.form_container} onSubmit={handleSubmit}>
             <h1>Create Account</h1>
+            <br/>
             <input
               type="text"
               placeholder="First Name"
@@ -121,22 +122,26 @@ const Signup = () => {
               required
               className={styles.input}
             />
-            <div className="tog">
-
-            <input
-              type="password"
-              placeholder="Confirm Password"
-              name="Confirmpassword"
-              onChange={handleChange}
-              value={data.Confirmpassword}
-              required
-              className={styles.input}
-              />
-            <span onClick={handleToggle}>
-              <Icon icon={icon} size={25} />{" "}
-            </span>
-            </div>
-
+            <div className="wrapper">
+              <div className="1">
+              <input
+                  type={type}
+                  placeholder="Confirm Password"
+                  name="Confirmpassword"
+                  onChange={handleChange}
+                  value={data.Confirmpassword}
+                  required
+                  className={styles.input}
+                  />
+              </div>
+              <div className="2">
+    
+                <span onClick={handleToggle}>
+                  <Icon icon={icon} size={15} />
+                </span>
+              </div>
+              </div>
+            
             {error && <div className={styles.error_msg}>{error}</div>}
             {msg && <div className={styles.success_msg}>{msg}</div>}
             <button type="submit" className={styles.green_btn}>

@@ -18,7 +18,8 @@ const Hero = () => {
                         </button>
                         <button className="primary-btn1">
                             VIEW PRODUCTS <FaLongArrowAltRight />
-                        </button> */}
+                        </button> */
+                        }
                     </div>
                 </div>
             </div>    

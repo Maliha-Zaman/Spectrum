@@ -50,6 +50,9 @@ const Form = () => {
   return (
     <>
       <Header />
+      <div className="formpage">
+
+
       <form onSubmit={handleSubmit} className="form" autocomplete="off">
         <div className="fb">
           <div className="form-header">
@@ -208,6 +211,7 @@ const Form = () => {
           </div>
         </div>
       </form>
+      </div>
       <Footer />
     </>
   );
