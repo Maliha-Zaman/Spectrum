@@ -9,7 +9,7 @@ const Stores = () => {
         <div className='stores'>
           <div className="card_container">
             <div className="image_container">
-              <img src='' alt="" />
+              
             </div>
             <div className="card_content">
               <div className="card_title">

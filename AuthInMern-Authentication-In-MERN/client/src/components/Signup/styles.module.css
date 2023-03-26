@@ -52,6 +52,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 500px;
 }
 
 .form_container h1 {
@@ -61,7 +62,7 @@
 
 .input {
   outline: none;
-  /* border: none; */
+  border: none;
   border-width: 0.005cm;
   border-color: #1eb2a6;
   box-shadow: 2px #1eb2a6;
@@ -131,6 +132,16 @@ span{
 	cursor: pointer;
 }
 
-
-
+.wrapper {
+  display: flex;
+  flex-direction: row;  
+  
+}
+/* 
+.wrapper span {
+  position: absolute;
+  left: 12px;
+  top: 20rem;
+  padding-left: 150px;
+} */
 
