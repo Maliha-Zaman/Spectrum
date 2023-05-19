@@ -99,5 +99,22 @@ const validate = (data) => {
   });
   return schema.validate(data);
 };
+// router.post("/userData",async(req,res)=>{
+//   const{token}=req.body;
+//   try{
+//      const user=jwt.verify(token,JWTPRIVATEKEY);
+//      const userEmail = user.email;
+//      User.findOne({email:userEmail}).then((data)=>{
+//       res.send({status:"ok",data:data});
+//      })
+//      .catch((error)=>{
+//       res.send({status:"error",data:error});
+//      });
+
+//   }catch(error)
+//   {
+   
+//   }
+// })
 
 module.exports = router;

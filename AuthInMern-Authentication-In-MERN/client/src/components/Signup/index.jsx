@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-//import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 import { Icon } from "react-icons-kit";
 import { eyeOff } from "react-icons-kit/feather/eyeOff";
 import { eye } from "react-icons-kit/feather/eye";
-// import { Input } from "@chakra-ui/react";
 import Header from "../common/heading/Header";
 import { FaChalkboard } from "react-icons/fa";
 const Signup = () => {
@@ -34,7 +32,6 @@ const Signup = () => {
   // };
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
-    // this.setData = " ";
   };
 
   const handleSubmit = async (e) => {
@@ -144,10 +141,10 @@ const Signup = () => {
                   />
               </div>
               <div className="2">
-    
+{/*     
                 <span onClick={handleToggle}>
                   <Icon icon={icon} size={15} />
-                </span>
+                </span> */}
               </div>
               </div>
             

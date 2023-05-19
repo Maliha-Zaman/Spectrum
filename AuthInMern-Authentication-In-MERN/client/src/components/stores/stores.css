@@ -27,6 +27,42 @@
     overflow: hidden;
     height: 300px;
 }
+.image_container1{
+    background-image: url(./Apex.jpg);
+    background-size: cover;
+    overflow: hidden;
+    height: 300px;
+}
+.image_container2{
+    background-image: url(./Bata.png);
+    background-size: cover;
+    overflow: hidden;
+    height: 300px;
+}
+.image_container3{
+    background-image: url(./Infinity.png);
+    background-size: cover;
+    overflow: hidden;
+    height: 300px;
+}
+.image_container4{
+    background-image: url(./Rise.png);
+    background-size: cover;
+    overflow: hidden;
+    height: 300px;
+}
+.image_container5{
+    background-image: url(./twelve.png);
+    background-size: cover;
+    overflow: hidden;
+    height: 300px;
+}
+.image_container6{
+    background-image: url(./Artisan.png);
+    background-size: cover;
+    overflow: hidden;
+    height: 300px;
+}
 
 .card_content {
     margin: 1rem;

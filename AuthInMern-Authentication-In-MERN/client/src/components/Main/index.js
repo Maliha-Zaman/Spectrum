@@ -1,12 +1,60 @@
-import React from 'react'
-import Header from '../common/heading/Header'
-import Footer from '../footer/Footer'
-import "../stores/stores.css"
-const Stores = () => {
-  return (
-    <>
-        <Header />
-        <div className='stores'>
+import styles from "./styles.module.css";
+import Footer from "../footer/Footer"
+import { Component, useEffect } from "react";
+export default class Main extends Component{
+
+	// const handleLogout = () => {
+	// 	localStorage.removeItem("token");
+	// 	window.location.reload();
+	// };
+  constructor(props){
+    super(props);
+    this.state = {
+        userData: {},
+    };
+}
+componentDidMount(){
+fetch("http://127.0.0.1:8000/userData", {
+    method:"POST",
+    crossDomain: true,
+    headers:{
+      "Content-Type":"application/json",
+      Accept:"application/json",
+      "Access-Control-Allow-Origin":"*",
+    },
+    body:JSON.stringify({
+      token: window.localStorage.getItem("token"),
+    }),
+  }).then((res)=>res.json())
+  .then((data)=>{
+    console.log(data, "userData");
+    this.setState({userData:data.data});
+  });
+}
+  render(){
+	const handleLogout = () => {
+		localStorage.removeItem("token");
+		window.location.reload();
+	};
+  
+	return (
+		<>
+		<div className={styles.main_container}>
+			<nav className={styles.navbar}>
+				<h1>Welcome!!</h1>
+				<button className={styles.white_btn} onClick={handleLogout}>
+					Logout
+				</button>
+        {/* <table>
+          <tr>
+            <th>name</th>
+            <th>Email</th>
+          </tr>
+        </table> */}
+			</nav>
+		</div>
+      <h1>{this.state.userData.firstName}</h1>
+    {/* <div className='stores'>
           <div className="card_container">
             <div className="image_container">
               
@@ -133,11 +181,12 @@ const Stores = () => {
               </button>
             </div>
           </div>
-
-        </div>
-        <Footer />
-    </>
-  )
+ */}
+        {/* </div> */}
+		  <Footer />
+		</>
+	);
+  }
 }
 
-export default Stores
+

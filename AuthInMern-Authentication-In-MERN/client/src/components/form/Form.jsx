@@ -165,20 +165,6 @@ const Form = () => {
               {/* <input type="date" id="dob" required /> */}
               <input
                 type="text"
-                placeholder="Phone Number"
-                className="phonenumber"
-                minlength="2"
-                required
-                onChange={(e) => {
-                  setPhone(e.target.value);
-                }}
-              />
-            </fieldset>
-            <fieldset className="input-container">
-              {/* <label for="dob">Date of birth</label> */}
-              {/* <input type="date" id="dob" required /> */}
-              <input
-                type="text"
                 placeholder="Bank Account"
                 className="bankaccount"
                 minlength="2"
