@@ -1,15 +1,13 @@
 const router = require("express").Router();
 const { User, validate } = require("../models/user");
-const { demoUser} = require("../dataSchema");
+const { demoUser } = require("../dataSchema");
 const Token = require("../models/token");
 const crypto = require("crypto");
 const sendEmail = require("../utils/sendEmail");
 const bcrypt = require("bcrypt");
 
-
 router.post("/", async (req, res) => {
   try {
-
     const { error } = validate(req.body);
     if (error)
       return res.status(400).send({ message: error.details[0].message });
@@ -60,6 +58,5 @@ router.get("/:id/verify/:token/", async (req, res) => {
     res.status(500).send({ message: "Internal Server Error" });
   }
 });
-
 
 module.exports = router;
