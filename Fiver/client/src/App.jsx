@@ -15,7 +15,7 @@ import Message from "./pages/message/Message";
 import MyGigs from "./pages/myGigs/MyGigs";
 import Success from "./pages/success/Success";
 import Pay from "./pages/pay/Pay";
-
+import EmailVerify from "./pages/EmailVerify/emailVerify";
 import {
   QueryClient,
   QueryClientProvider,
@@ -88,6 +88,10 @@ function App() {
         {
           path: "/success",
           element: <Success />,
+        },
+        {
+          path: "/:id/verify/:token",
+          element: <EmailVerify />,
         },
       ],
     },

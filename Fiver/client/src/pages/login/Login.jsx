@@ -9,19 +9,37 @@ function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const [msg, setMsg] = useState("");
+  const [loading, setLoading] = useState(false);
 
-   const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-       const res=await newRequest.post("/auth/login", { username, password });
-       localStorage.setItem("currentUser", JSON.stringify(res.data));
-       navigate("/")
-     
-    } catch (err) {
-      setError(err.response.data);
-     
+      setLoading(true);
+      const res = await newRequest.post("/auth/login", { username, password });
+      localStorage.setItem("currentUser", JSON.stringify(res.data));
+      console.log(res.data);
+      setMsg(res.message);
+      setTimeout(() => {
+        setMsg("");
+      }, 5000);
+      setLoading(false);
+      navigate("/");
+    } catch (error) {
+      setLoading(false);
+
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        setError(error.response.data.message);
+      }
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 5000);
     }
   };
 
@@ -43,8 +61,14 @@ function Login() {
           type="password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Login</button>
-         {error && error} 
+        {error && <div className="error">{error}</div>}
+        {/* {msg && <div className="error">{setMsg}</div>} */}
+
+        <button type="submit">
+          {/* Login */}
+          {loading ? <>Loading..</> : <>Register</>}
+        </button>
+        {/* {error && error} */}
       </form>
     </div>
   );
