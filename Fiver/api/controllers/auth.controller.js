@@ -29,7 +29,7 @@ export const register = async (req, res, next) => {
       userId: newUser._id,
       token: crypto.randomBytes(32).toString("hex"),
     }).save();
-    const url = `${process.env.BASE_URL}users/${newUser.id}/verify/${token.token}`;
+    const url = `${process.env.BASE_URL}auth/${newUser.id}/verify/${token.token}`;
     await sendEmail(newUser.email, "Verify Email", url);
 
     // userId: newUser._id, await sendEmail(newUser.email, "Verify Email", url);
@@ -47,7 +47,7 @@ export const register = async (req, res, next) => {
 //
 export const verifytoken = async (req, res) => {
   try {
-    const currentUser = getCurrentUser();
+    // const currentUser = getCurrentUser();
     //`/gigs?userId=${currentUser._id}`)
     //const user = await User.findOne({ req.body.user.id: req.params.id });
     // const user = await User.findOne({ UserId: req.params.id });
@@ -68,6 +68,8 @@ export const verifytoken = async (req, res) => {
     //   _id: currentUser._id,
     //   _id: req.params.id,
     // });
+
+    //
 
     if (!user) return res.status(400).send({ message: "Invalid link" });
 
@@ -92,7 +94,24 @@ export const login = async (req, res, next) => {
     const user = await User.findOne({ username: req.body.username });
 
     if (!user) return next(createError(404, "User not found!"));
+    if (!user.verified) {
+      let token = await Token.findOne({ userId: user._id });
+      if (!token) {
+        token = await new Token({
+          userId: user._id,
+          token: crypto.randomBytes(32).toString("hex"),
+        }).save();
+        const url = `${process.env.BASE_URL}auth/${user.id}/verify/${token.token}`;
+        await sendEmail(user.email, "Verify Email", url);
+      }
 
+      return res
+        .status(400)
+        .send({ message: "An Email sent to your account please verify" });
+    }
+
+    const tokenn = user.generateAuthToken();
+    res.status(200).send({ data: tokenn, message: "logged in successfully" });
     const isCorrect = bcrypt.compareSync(req.body.password, user.password);
     if (!isCorrect)
       //return next(createError(400, "Wrong password or username!"));
