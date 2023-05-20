@@ -14,8 +14,22 @@ const Pay = () => {
   const [clientSecret, setClientSecret] = useState("");
 
   const { id } = useParams();
-
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState(null);
   useEffect(() => {
+    // const userData = localStorage.getItem("user");
+    // if (userData) {
+    //   // User data exists
+    //   const parsedUser = JSON.parse(userData);
+    //   setUser(parsedUser);
+    // } else {
+    //   // User data does not exist
+    //   setError("No user found");
+    // }
+    // if (error) {
+    //   // Render an error message if there is no logged-in user
+    //   return <div>{error}</div>;
+    // } else {
     const makeRequest = async () => {
       try {
         const res = await newRequest.post(
@@ -24,6 +38,9 @@ const Pay = () => {
         setClientSecret(res.data.clientSecret);
       } catch (err) {
         console.log(err);
+        setError(
+          "You are not an authorized user. Please sign in to make a purchase"
+        );
       }
     };
     makeRequest();
@@ -39,6 +56,8 @@ const Pay = () => {
 
   return (
     <div className="pay">
+      {error && <div className="error">{error}</div>}
+      {/* {msg && <div className="error">{setMsg}</div>} */}
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
           <CheckoutForm />

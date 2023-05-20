@@ -34,6 +34,18 @@ import Order from "../models/order.model.js";
 import Stripe from "stripe";
 
 export const intent = async (req, res, next) => {
+  // const userData = localStorage.getItem("user");
+
+  // // Check if user data exists
+  // if (userData) {
+  //   // User data exists in local storage
+  //   const user = JSON.parse(userData);
+  //   // Perform actions with the user data
+  //   console.log("User:", user);
+  // } else {
+  //   // User data does not exist in local storage
+  //   console.log("User data not found");
+  // }
   const stripe = new Stripe(process.env.STRIPE);
   const gig = await Gig.findById(req.params.id);
   const paymentIntent = await stripe.paymentIntents.create({
