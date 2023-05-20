@@ -15,7 +15,8 @@ import Message from "./pages/message/Message";
 import MyGigs from "./pages/myGigs/MyGigs";
 import Success from "./pages/success/Success";
 import Pay from "./pages/pay/Pay";
-
+import Team from "./pages/team/Team";
+import EmailVerify from "./pages/EmailVerify/emailVerify";
 import {
   QueryClient,
   QueryClientProvider,
@@ -72,6 +73,10 @@ function App() {
           path: "/gig/:id",
           element: <Gig />,
         },
+        {
+          path: "/team",
+          element: <Team />,
+        },
 
         {
           path: "/register",
@@ -88,6 +93,10 @@ function App() {
         {
           path: "/success",
           element: <Success />,
+        },
+        {
+          path: "/:id/verify/:token",
+          element: <EmailVerify />,
         },
       ],
     },

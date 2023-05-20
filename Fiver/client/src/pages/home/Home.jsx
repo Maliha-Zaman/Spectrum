@@ -11,13 +11,19 @@ function Home() {
   return (
     <div className="home">
       <Featured />
+      <br />
+      <br />
       <TrustedBy />
       {/* <Slide slidesToShow={5} arrowsScroll={5}>
         {cards.map((card) => (
           <CatCard key={card.id} card={card} />
-        ))}
-      </Slide> */}
+          ))}
+        </Slide> */}
+        <br />
       <CatCard />
+      <br />
+      <br />
+      <br />
       <div className="features">
         <div className="container">
           <div className="item">
@@ -50,7 +56,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="explore">
+      {/* <div className="explore">
         <div className="container">
           <h1>Explore the marketplace</h1>
           <div className="items">
@@ -137,7 +143,7 @@ function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="features dark">
         <div className="container">
           <div className="item">
