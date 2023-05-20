@@ -8,7 +8,7 @@
 //     clientSecret: paymentIntent.client_secret,
 //   });
 // };
-
+////yyyyy
 // export const confirm = async (req, res, next) => {
 //   try {
 //     const orders = await Order.findOneAndUpdate(
