@@ -31,17 +31,17 @@ const Pay = () => {
     //   return <div>{error}</div>;
     // } else {
     const makeRequest = async () => {
-      try {
+       try {
         const res = await newRequest.post(
           `/orders/create-payment-intent/${id}`
         );
         setClientSecret(res.data.clientSecret);
-      } catch (err) {
+       } catch (err) {
         console.log(err);
         setError(
           "You are not an authorized user. Please sign in to make a purchase"
         );
-      }
+        }
     };
     makeRequest();
   }, []);
@@ -56,6 +56,7 @@ const Pay = () => {
 
   return (
     <div className="pay">
+     
       {error && <div className="error">{error}</div>}
       {/* {msg && <div className="error">{setMsg}</div>} */}
       {clientSecret && (

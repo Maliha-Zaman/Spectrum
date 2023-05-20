@@ -45,7 +45,7 @@ function Gigs() {
   return (
     <div className="gigs">
       <div className="container">
-      
+      <br/>
         <div className="menu">
           <div className="left">
             <span>Budget</span>

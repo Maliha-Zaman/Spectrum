@@ -39,9 +39,7 @@ function Gig() {
       ) : (
         <div className="container">
           <div className="left">
-            <span className="breadcrumbs">
-             Spectrum {">"} Graphics & Design{">"}
-            </span>
+        
             <h1>{data.title}</h1>
             {isLoadingUser ? (
               "loading"
@@ -133,7 +131,7 @@ function Gig() {
           <div className="right">
             <div className="price">
               <h3>{data.shortTitle}</h3>
-              <h2>$ {data.price}</h2>
+              <h2>Tk {data.price}</h2>
             </div>
             <p>
               {/* I will create a unique high quality AI generated image based on a
