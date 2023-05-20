@@ -115,13 +115,11 @@ function Register() {
 
           {/* {error && <div>{error}</div>}
           {msg && <div>{msg}</div>} */}
-          <button type="submit">
-            {/* Register */}
-            {loading ? <>Loading..</> : <>Register</>}
-          </button>
+    
         </div>
         <div className="right">
-          <h1>I want to become a seller</h1>
+          <h2>To become a seller, activate the seller account</h2>
+          {/* <h3>(Remember, you cannot buy products if you decide to become a seller!!)</h3> */}
           <div className="toggle">
             <label htmlFor="">Activate the seller account</label>
             <label className="switch">
@@ -133,18 +131,22 @@ function Register() {
           <input
             name="phone"
             type="text"
-            placeholder="01321198914"
+            placeholder="01XXXXXXXX"
             onChange={handleChange}
           />
-          <label htmlFor="">Description</label>
+          <label htmlFor="">Address</label>
           <textarea
-            placeholder="A short description of yourself"
+            placeholder="Address"
             name="desc"
             id=""
             cols="30"
             rows="10"
             onChange={handleChange}
           ></textarea>
+                <button type="submit">
+            {/* Register */}
+            {loading ? <>Loading..</> : <>Register</>}
+          </button>
         </div>
       </form>
     </div>
