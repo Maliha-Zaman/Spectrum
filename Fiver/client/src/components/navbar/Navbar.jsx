@@ -123,7 +123,7 @@ function Navbar() {
               Lifestyle
             </Link> */}
           </div>
-          <hr />
+          {/* <hr /> */}
         </>
       )}
     </div>

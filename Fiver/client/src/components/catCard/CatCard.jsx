@@ -12,38 +12,38 @@ function CatCard({ card }) {
           <img src="./img/shirt.png" alt="" />
         </div>
         <div className="info">
-          <span className="title">Shirt</span>
+          <p className="title">Shirt</p>
         </div>
     </div>
     </Link>
     <Link to="/gigs?cat=tshirt">
     <div className="catCard">
       <img src="./img/tshirt.png" alt="" />
-      <span className="title">T-shirt</span>
+      <p className="title">T-shirt</p>
     </div>
     </Link>
     <Link to="/gigs?cat=pant">
     <div className="catCard">
       <img src="./img/jeans.png" alt="" />
-      <span className="title">Pant</span>
+      <p className="title">Pant</p>
     </div>
     </Link>
     <Link to="/gigs?cat=shoes">
     <div className="catCard">
       <img src="./img/shoes.png" alt="" />
-      <span className="title">Shoes</span>
+      <p className="title">Shoes</p>
     </div>
     </Link>
     <Link to="/gigs?cat=watches">
     <div className="catCard">
       <img src="./img/wristwatch.png" alt="" />
-      <span className="title">Wristwatch</span>
+      <p className="title">Wristwatch</p>
     </div>
     </Link>
     <Link to="/gigs?cat=bag">
     <div className="catCard">
       <img src="./img/bag.png" alt="" />
-      <span className="title">Bag</span>
+      <p className="title">Bag</p>
     </div>
     </Link>
     </div>
@@ -53,6 +53,6 @@ function CatCard({ card }) {
 export default CatCard;
     {/* <div className="catCard">
       <img src={card.img} alt="" />
-      <span className="desc">{card.desc}</span>
-      <span className="title">{card.title}</span>
+      <p className="desc">{card.desc}</p>
+      <p className="title">{card.title}</p>
     </div> */}
