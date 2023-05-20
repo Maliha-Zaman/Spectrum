@@ -35,30 +35,30 @@ export const posttocart = async (req, res, next) => {
     console.log(newproduct);
     const cart = await Cart.findOne({ userId });
 
+    //   const updatedCart = await Cart.findOneAndUpdate(
+    //     { userId: userId },
+    //     {
+    //       $push: {
+    //         products: {
+    //           gigId: id,
+    //           sellerId: product.userId,
+    //           price: product.price,
+    //           //quantity: quantity + 1,
+    //         },
+    //       },
+    //     }
+    //   );
+    //   cart.products = cart.products.concat(
+    //     products.map((newproduct) => ({
+    //       gigId: id,
+    //       sellerId: newproduct.userId,
+    //       price: newproduct.price,
+    //       //quantity: quantity + 1,
+    //     }))
+    //   );
+    //   await cart.save();
     if (cart) {
       console.log("Existing cart found");
-      //   const updatedCart = await Cart.findOneAndUpdate(
-      //     { userId: userId },
-      //     {
-      //       $push: {
-      //         products: {
-      //           gigId: id,
-      //           sellerId: product.userId,
-      //           price: product.price,
-      //           //quantity: quantity + 1,
-      //         },
-      //       },
-      //     }
-      //   );
-      //   cart.products = cart.products.concat(
-      //     products.map((newproduct) => ({
-      //       gigId: id,
-      //       sellerId: newproduct.userId,
-      //       price: newproduct.price,
-      //       //quantity: quantity + 1,
-      //     }))
-      //   );
-      //   await cart.save();
 
       const updatedCart = await Cart.findOneAndUpdate(
         { userId: userId },
