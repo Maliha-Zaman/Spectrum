@@ -40,9 +40,9 @@ const GigCard = ({ item }) => {
         </div>
         <hr />
         <div className="detail">
-          <img src="./img/heart.png" alt="" />
+           <span>PRICE</span>
           <div className="price">
-            <span>STARTING AT</span>
+        
             <h2>
              {item.price} Tk
               {/* <sup>99</sup> */}

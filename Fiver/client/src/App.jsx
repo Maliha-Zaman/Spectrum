@@ -15,6 +15,7 @@ import Message from "./pages/message/Message";
 import MyGigs from "./pages/myGigs/MyGigs";
 import Success from "./pages/success/Success";
 import Pay from "./pages/pay/Pay";
+import Cart from "./pages/cart/cart";
 import Team from "./pages/team/Team";
 import EmailVerify from "./pages/EmailVerify/emailVerify";
 import {
@@ -89,6 +90,10 @@ function App() {
         {
           path: "/pay/:id",
           element: <Pay />,
+        },
+        {
+          path: "/cart/:id",
+          element: <Cart />,
         },
         {
           path: "/success",
