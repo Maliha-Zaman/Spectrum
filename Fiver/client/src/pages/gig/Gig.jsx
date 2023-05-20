@@ -40,7 +40,7 @@ function Gig() {
         <div className="container">
           <div className="left">
             <span className="breadcrumbs">
-             Spectrum {">"} Graphics & Design{">"}
+              Spectrum {">"} Graphics & Design{">"}
             </span>
             <h1>{data.title}</h1>
             {isLoadingUser ? (
@@ -176,7 +176,10 @@ function Gig() {
                 </div>
               ))}
             </div>
-            <Link to={`/pay/${id}`}>
+            {/* <Link to={`/pay/${id}`}>
+              <button>Continue</button>
+            </Link> */}
+            <Link to={`/cart/${id}`}>
               <button>Continue</button>
             </Link>
           </div>
