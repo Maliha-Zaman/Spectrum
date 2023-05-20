@@ -46,7 +46,7 @@ function Navbar() {
         <div className="links">
           {/* <span>Liverr Business</span>
           <span>Explore</span> */}
-          <span>English</span>
+          {/* <span>English</span> */}
           {!currentUser?.isSeller 
           // && 
           // <span>Become a Seller</span>
@@ -60,10 +60,10 @@ function Navbar() {
                   {currentUser.isSeller && (
                     <>
                       <Link className="link" to="/mygigs">
-                        Gigs
+                        Products
                       </Link>
                       <Link className="link" to="/add">
-                        Add New Gig
+                        Add New Product
                       </Link>
                     </>
                   )}
