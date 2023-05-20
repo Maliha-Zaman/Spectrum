@@ -14,10 +14,10 @@ function Footer() {
             <h2>About</h2>
           </div> 
         </div> */}
-        <hr />
+        {/* <hr /> */}
         <div className="bottom">
           <div className="left">
-            <h2>Spectrum</h2>
+            <h1>Spectrum</h1>
             {/* <span>© Spectrum Ltd. 2023</span> */}
           </div>
           <div className="right">
