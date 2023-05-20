@@ -90,6 +90,7 @@ const Add = () => {
             />
             <label htmlFor="">Category</label>
             <select name="cat" id="cat" onChange={handleChange}>
+              <option value=""></option>
               <option value="shirt">Shirt</option>
               <option value="tshirt">Tshirt</option>
               <option value="pant">Pant</option>
