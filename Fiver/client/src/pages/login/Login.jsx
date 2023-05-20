@@ -1,7 +1,8 @@
+
 import React, { useState } from "react";
 import "./Login.scss";
 
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import newRequest from "../../../../api/utils/newRequest";
 
@@ -45,50 +46,42 @@ function Login() {
 
   return (
     <div className="login">
-      <div className="contain">
+      <div className="login_container">
+        <div className="form_container">
+          <form onSubmit={handleSubmit}>
+            <h1>Sign in</h1>
+            <label htmlFor="">Username</label>
+            <input
+              name="username"
+              type="text"
+              placeholder="johndoe"
+              onChange={(e) => setUsername(e.target.value)}
+              />
 
-
-
-      <form onSubmit={handleSubmit}>
-        {/* <div className="contain">         */}
-        <h1>Sign in</h1>
-        <label htmlFor="">Username</label>
-        <input
-          name="username"
-          type="text"
-          placeholder="johndoe"
-          onChange={(e) => setUsername(e.target.value)}
-        />
-
-        <label htmlFor="">Password</label>
-        <input
-          name="password"
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        {error && <div className="error">{error}</div>}
-        {/* {msg && <div className="error">{setMsg}</div>} */}
-
-        <button type="submit">
-          {/* Login */}
-          {loading ? <>Loading..</> : <>Login</>}
-        </button>
-        {/* {error && error} */}
-        {/* </div> */}
-      </form>
+            <label htmlFor="">Password</label>
+            <input
+              name="password"
+              type="password"
+              placeholder="password"
+              onChange={(e) => setPassword(e.target.value)}
+              />
+            {error && <div className="error">{error}</div>}
+            {/* {msg && <div className="error">{setMsg}</div>} */}
+            <p>Don't have an account? <Link to="/register">
+              Sign up
+            </Link>
+            </p>
+            
+            <button type="submit">
+              {/* Login */}
+              {loading ? <>Loading..</> : <>Login</>}
+            </button>
+            {/* {error && error} */}
+        </form>
+        </div>
       </div>
     </div>
-
-
-
-
-
-
-
-
   );
 }
 
 export default Login;
-//rise er password user22
-
