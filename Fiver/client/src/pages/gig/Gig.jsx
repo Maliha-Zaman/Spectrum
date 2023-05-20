@@ -176,7 +176,7 @@ function Gig() {
             {/* <Link to={`/pay/${id}`}>
               <button>Continue</button>
             </Link> */}
-            <Link to={`/cart/${id}`}>
+            <Link to={`/pay/${id}`}>
               <button>Continue</button>
             </Link>
           </div>

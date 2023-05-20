@@ -45,7 +45,12 @@ function Login() {
 
   return (
     <div className="login">
+      <div className="contain">
+
+
+
       <form onSubmit={handleSubmit}>
+        {/* <div className="contain">         */}
         <h1>Sign in</h1>
         <label htmlFor="">Username</label>
         <input
@@ -69,8 +74,18 @@ function Login() {
           {loading ? <>Loading..</> : <>Login</>}
         </button>
         {/* {error && error} */}
+        {/* </div> */}
       </form>
+      </div>
     </div>
+
+
+
+
+
+
+
+
   );
 }
 
