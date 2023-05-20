@@ -28,23 +28,24 @@ function Footer() {
               <img src="/img/pinterest.png" alt="" />
               <img src="/img/instagram.png" alt="" /> */}
             </div>
-            <Link to="">
-              Categories<t/>
-
-            </Link>
-            About<t/>
-            <Link to="/team">
-              Team <t />
-
-            </Link>
             <div className="link">
               <img src="/img/language.png" alt="" />
               <span>English</span>
             </div>
-            <div className="link">
+            <Link to="">
+              <button>Categories</button><t/>
+
+            </Link>
+              <button>About</button>
+            <Link to="/team">
+              
+              <button>Team</button>
+
+            </Link>
+            {/* <div className="link">
               <img src="/img/coin.png" alt="" />
               <span>BDT</span>
-            </div>
+            </div> */}
             {/* <img src="/img/accessibility.png" alt="" /> */}
           </div>
         </div>

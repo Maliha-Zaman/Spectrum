@@ -46,7 +46,7 @@ function Navbar() {
         <div className="links">
           {/* <span>Liverr Business</span>
           <span>Explore</span> */}
-          <span>English</span>
+          {/* <span>English</span> */}
           {!currentUser?.isSeller 
           // && 
           // <span>Become a Seller</span>
@@ -95,13 +95,13 @@ function Navbar() {
         <>
           <hr />
           <div className="menu">
-            <Link className="link menuLink" to="/gigs?cat=shirt">
+            <Link className="link menuLink" to="/gigs?cat=design">
               Shirt
             </Link>
             <Link className="link menuLink" to="/gigs?cat=tshirt">
               T-shirts
             </Link>
-            <Link className="link menuLink" to="/gigs?cat=pant">
+            <Link className="link menuLink" to="/gigs?cat=animation">
               Pants
             </Link>
             {/* <Link className="link menuLink" to="/">
