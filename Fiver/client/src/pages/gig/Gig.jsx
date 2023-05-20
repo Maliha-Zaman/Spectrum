@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import "./Gig.scss";
 import { Slider } from "infinite-react-carousel/lib";
@@ -7,6 +8,8 @@ import newRequest from "../../../../api/utils/newRequest";
 import Reviews from "../../components/reviews/Reviews";
 
 function Gig() {
+  const [message, setMessage] = useState("");
+
   const { id } = useParams();
   //console.log(params);
   const { isLoading, error, data } = useQuery({
@@ -30,6 +33,17 @@ function Gig() {
       }),
     enabled: !!userId,
   });
+  const addToCart = () => {
+    newRequest
+      .post(`/cart/${id}`)
+      .then((response) => {
+        setMessage(response.data.message); // Set the response message
+      })
+      .catch((error) => {
+        setMessage("Error adding product to cart"); // Set an error message
+        console.error(error);
+      });
+  };
   return (
     <div className="gig">
       {isLoading ? (
@@ -176,9 +190,14 @@ function Gig() {
             {/* <Link to={`/pay/${id}`}>
               <button>Continue</button>
             </Link> */}
-            <Link to={`/cart/${id}`}>
+            {/* <Link to={`/cart/${id}`}>
               <button>Continue</button>
-            </Link>
+            </Link> */}
+            {/* <Link to={`/cart/${id}`}>
+              <button onClick={handleSubmit}>Continue</button>
+            </Link> */}
+            {message && <p>{message}</p>}
+            <button onClick={addToCart}>Add to Cart</button>
           </div>
         </div>
       )}

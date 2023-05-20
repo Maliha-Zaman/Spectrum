@@ -1,9 +1,12 @@
 import express from "express";
-import { cart } from "../controllers/cart.controller.js";
+import { getfromcart, posttocart } from "../controllers/cart.controller.js";
+import { verifyToken } from "../middleware/jwt.js";
 
 const router = express.Router();
 
-router.get("/cart/:id", cart);
+router.get("/:id", verifyToken, getfromcart);
+router.post("/:id", verifyToken, posttocart);
+
 // router.post("/login", login);
 // router.post("/logout", logout);
 // router.get("/:id/verify/:token/", verifytoken);
