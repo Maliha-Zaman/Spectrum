@@ -12,7 +12,9 @@ const stripePromise = loadStripe(
 
 const Pay = () => {
   const [clientSecret, setClientSecret] = useState("");
-
+  const [msg, setMsg] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
@@ -22,8 +24,16 @@ const Pay = () => {
           `/orders/create-payment-intent/${id}`
         );
         setClientSecret(res.data.clientSecret);
+        // setMsg(res.message);
+        // setTimeout(() => {
+        //   setMsg("");
+        // }, 5000);
+        // setLoading(false);
       } catch (err) {
         console.log(err);
+        // setTimeout(() => {
+        //   setErrorMessage("");
+        // }, 5000);
       }
     };
     makeRequest();
@@ -39,6 +49,7 @@ const Pay = () => {
 
   return (
     <div className="pay">
+      {/* <div>ggg</div> */}
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
           <CheckoutForm />
