@@ -95,13 +95,13 @@ function Navbar() {
         <>
           <hr />
           <div className="menu">
-            <Link className="link menuLink" to="/gigs?cat=design">
+            <Link className="link menuLink" to="/gigs?cat=shirt">
               Shirt
             </Link>
             <Link className="link menuLink" to="/gigs?cat=tshirt">
               T-shirts
             </Link>
-            <Link className="link menuLink" to="/gigs?cat=animation">
+            <Link className="link menuLink" to="/gigs?cat=pant">
               Pants
             </Link>
             {/* <Link className="link menuLink" to="/">

@@ -6,7 +6,7 @@ function CatCard({ card }) {
   return (
     <>
     <div className="CartCategories">
-    <Link to="/gigs?cat=animation">
+    <Link to="/gigs?cat=shirt">
     <div className="catCard">
         <div className="image">
           <img src="./img/shirt.png" alt="" />
@@ -22,7 +22,7 @@ function CatCard({ card }) {
       <span className="title">T-shirt</span>
     </div>
     </Link>
-    <Link to="/gigs?cat=design">
+    <Link to="/gigs?cat=pant">
     <div className="catCard">
       <img src="./img/jeans.png" alt="" />
       <span className="title">Pant</span>
