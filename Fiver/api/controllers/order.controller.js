@@ -32,7 +32,7 @@ import createError from "../utils/createError.js";
 import Gig from "../models/gig.model.js";
 import Order from "../models/order.model.js";
 import Stripe from "stripe";
-
+import getCurrentUser from "../utils/getCurrentUser.js";
 export const intent = async (req, res, next) => {
   // const userData = localStorage.getItem("user");
 
@@ -48,6 +48,28 @@ export const intent = async (req, res, next) => {
   // }
   const stripe = new Stripe(process.env.STRIPE);
   const gig = await Gig.findById(req.params.id);
+  const orders = await Gig.findOne({
+    //...(req.isSeller ? { sellerId: req.userId } : { buyerId: req.userId }),
+    userId: req.userId,
+   
+  });
+  if (orders && orders.userId != null) {
+    console.log(orders.userId);
+    return res.status(400).send({ message: "You can not buy your own gig" }); //throw new Error("Passwords must be same");
+  } else {
+    console.log("No orders found for the user");
+
+  }
+  // const user= getCurrentUser();
+  // if(orders.userId!=null)
+  // {
+  //   console.log("rders.userId");
+
+  // }
+  // if(!orders.userId){
+  //   return res.status(400).send({ message: "You can not buy your own gig" }); //throw new Error("Passwords must be same");
+
+  // }
   const paymentIntent = await stripe.paymentIntents.create({
     amount: gig.price * 100,
     currency: "usd",
@@ -90,11 +112,13 @@ export const intent = async (req, res, next) => {
 export const getOrders = async (req, res, next) => {
   try {
     const orders = await Order.find({
-      ...(req.isSeller ? { sellerId: req.userId } : { buyerId: req.userId }),
+      //...(req.isSeller ? { sellerId: req.userId } : { buyerId: req.userId }),
+      buyerId: req.userId,
       isCompleted: true,
     });
-
-    res.status(200).send(orders);
+// console.log("uuuu");
+    res.send(orders);
+    // status(200)
   } catch (err) {
     next(err);
   }

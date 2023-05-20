@@ -38,9 +38,18 @@ const Pay = () => {
         setClientSecret(res.data.clientSecret);
       } catch (err) {
         console.log(err);
-        setError(
-          "You are not an authorized user. Please sign in to make a purchase"
-        );
+        // if (
+        //   error.response &&
+        //   error.response.status == 400 
+        // ) {
+        //   setError(error.response.data.message);
+        // }
+        // else {
+
+          setError(
+            "You are not elligible for buying. Please sign in as a buyer to make a purchase"
+          );
+        // }
       }
     };
     makeRequest();
