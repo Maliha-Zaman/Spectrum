@@ -15,6 +15,7 @@ import Message from "./pages/message/Message";
 import MyGigs from "./pages/myGigs/MyGigs";
 import Success from "./pages/success/Success";
 import Pay from "./pages/pay/Pay";
+import Team from "./pages/team/Team";
 
 import {
   QueryClient,
@@ -71,6 +72,10 @@ function App() {
         {
           path: "/gig/:id",
           element: <Gig />,
+        },
+        {
+          path: "/team",
+          element: <Team />,
         },
 
         {
