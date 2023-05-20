@@ -11,6 +11,10 @@ const OrderSchema = new Schema(
       type: String,
       required: false,
     },
+    quantity: {
+      type: Number,
+      required: true,
+    },
     title: {
       type: String,
       required: true,
