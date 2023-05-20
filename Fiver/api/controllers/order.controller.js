@@ -33,32 +33,30 @@ import Gig from "../models/gig.model.js";
 import Order from "../models/order.model.js";
 import Stripe from "stripe";
 import getCurrentUser from "../utils/getCurrentUser.js";
-export const intent = async (req, res, next) => {
-  // const userData = localStorage.getItem("user");
+// const userData = localStorage.getItem("user");
 
-  // // Check if user data exists
-  // if (userData) {
-  //   // User data exists in local storage
-  //   const user = JSON.parse(userData);
-  //   // Perform actions with the user data
-  //   console.log("User:", user);
-  // } else {
-  //   // User data does not exist in local storage
-  //   console.log("User data not found");
-  // }
+// // Check if user data exists
+// if (userData) {
+//   // User data exists in local storage
+//   const user = JSON.parse(userData);
+//   // Perform actions with the user data
+//   console.log("User:", user);
+// } else {
+//   // User data does not exist in local storage
+//   console.log("User data not found");
+// }
+export const intent = async (req, res, next) => {
   const stripe = new Stripe(process.env.STRIPE);
   const gig = await Gig.findById(req.params.id);
   const orders = await Gig.findOne({
     //...(req.isSeller ? { sellerId: req.userId } : { buyerId: req.userId }),
     userId: req.userId,
-   
   });
   if (orders && orders.userId != null) {
     console.log(orders.userId);
     return res.status(400).send({ message: "You can not buy your own gig" }); //throw new Error("Passwords must be same");
   } else {
     console.log("No orders found for the user");
-
   }
   // const user= getCurrentUser();
   // if(orders.userId!=null)
@@ -116,7 +114,7 @@ export const getOrders = async (req, res, next) => {
       buyerId: req.userId,
       isCompleted: true,
     });
-// console.log("uuuu");
+    // console.log("uuuu");
     res.send(orders);
     // status(200)
   } catch (err) {

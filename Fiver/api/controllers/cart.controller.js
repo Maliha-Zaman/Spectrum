@@ -1,13 +1,30 @@
-import User from "../models/cart.model.js";
-import createError from "../utils/createError.js";
-import bcrypt from "bcrypt";
 import Cart from "../models/cart.model.js";
 import Gig from "../models/gig.model.js";
+import User from "../models/user.model.js";
 
 import getCurrentUser from "../utils/getCurrentUser.js";
 
 export const posttocart = async (req, res, next) => {
   try {
+    console.log("Cart");
+    // const gigowner = await Gig.findOne({
+    //   //...(req.isSeller ? { sellerId: req.userId } : { buyerId: req.userId }),
+    //   userId: req.userId,
+    // });
+    // if (gigowner && gigowner.userId != null) {
+    //   console.log(orders.userId);
+    //   //   return res.status(400).send({ message: "You can not buy your own gig" }); //throw new Error("Passwords must be same");
+    //   return res.json({ message: "You can not buy your own product" });
+    // }
+    const seller = await User.findOne({
+      //...(req.isSeller ? { sellerId: req.userId } : { buyerId: req.userId }),
+      _id: req.userId,
+    });
+    if (seller.isSeller) {
+      //   console.log(orders.userId);
+      //   return res.status(400).send({ message: "You can not buy your own gig" }); //throw new Error("Passwords must be same");
+      return res.json({ message: "You are not elligible to buy products" });
+    }
     const userId = req.userId;
     const { id } = req.params;
     //const gig = await Gig.findById(req.params.id);
@@ -51,6 +68,7 @@ export const posttocart = async (req, res, next) => {
               gigId: id,
               sellerId: newproduct.userId,
               price: newproduct.price,
+              title: newproduct.title,
             },
           },
         },
@@ -77,7 +95,7 @@ export const posttocart = async (req, res, next) => {
           gigId: id,
           sellerId: newproduct.userId,
           price: newproduct.price,
-          //quantity: quantity + 1,
+          title: newproduct.title,
         },
       });
       await addnewProduct.save();
@@ -93,31 +111,16 @@ export const posttocart = async (req, res, next) => {
 //
 
 export const getfromcart = async (req, res, next) => {
-  //   try {
-  //     const userId = req.userId;
-  //     const { id } = req.params;
-  //     //const gig = await Gig.findById(req.params.id);
-  //     const product = await Gig.findOne({
-  //       //...(req.isSeller ? { sellerId: req.userId } : { buyerId: req.userId }),
-  //       _id: req.params.id,
-  //     });
-  //     console.log(product);
-  //     console.log("Something happened. Please try again");
-  //     console.log(userId);
-  //     const newProduct = new Cart({
-  //       userId: userId,
-  //       products: {
-  //         gigId: id,
-  //         sellerId: product.userId,
-  //         price: product.price,
-  //         //quantity: quantity + 1,
-  //       },
-  //     });
-  //     await newProduct.save();
-  //   } catch (err) {
-  //     next(err);
-  //     res.send("Something wrong. Please try again");
-  //     console.log("directed wrong");
-  //   }
+  try {
+    const cart = await Cart.find({
+      //...(req.isSeller ? { sellerId: req.userId } : { buyerId: req.userId }),
+      userId: req.userId,
+    });
+    // console.log("uuuu");
+    res.send(cart);
+    // status(200)
+  } catch (err) {
+    next(err);
+  }
 };
 //
