@@ -6,49 +6,44 @@ function CatCard({ card }) {
   return (
     <>
     <div className="CartCategories">
-
-    <Link to="/gigs?cat=animation">
+    <Link to="/gigs?cat=shirt">
     <div className="catCard">
-      <div className="shirt">
-        <img src="./img/shirt.png" alt="" />
-        <span className="desc">Add talent to AI</span>
-        <span className="title">Shirts</span>
-      </div>
+        <div className="image">
+          <img src="./img/shirt.png" alt="" />
+        </div>
+        <div className="info">
+          <span className="title">Shirt</span>
+        </div>
     </div>
     </Link>
-    <Link to="/gigs?cat=design">
+    <Link to="/gigs?cat=tshirt">
     <div className="catCard">
       <img src="./img/tshirt.png" alt="" />
-      <span className="desc">Add talent to AI</span>
-      <span className="title">T-shirts</span>
+      <span className="title">T-shirt</span>
     </div>
     </Link>
-    <Link to="/gigs?cat=design">
+    <Link to="/gigs?cat=pant">
     <div className="catCard">
       <img src="./img/jeans.png" alt="" />
-      <span className="desc">Add talent to AI</span>
-      <span className="title">Pants</span>
+      <span className="title">Pant</span>
     </div>
     </Link>
-    <Link to="/gigs?cat=design">
-    <div className="catCard">
-      <img src="./img/shorts.png" alt="" />
-      <span className="desc">Add talent to AI</span>
-      <span className="title">Shorts</span>
-    </div>
-    </Link>
-    <Link to="/gigs?cat=design">
+    <Link to="/gigs?cat=shoes">
     <div className="catCard">
       <img src="./img/shoes.png" alt="" />
-      <span className="desc">Add talent to AI</span>
       <span className="title">Shoes</span>
     </div>
     </Link>
-    <Link to="/gigs?cat=design">
+    <Link to="/gigs?cat=watches">
     <div className="catCard">
       <img src="./img/wristwatch.png" alt="" />
-      <span className="desc">Add talent to AI</span>
-      <span className="title">Watches</span>
+      <span className="title">Wristwatch</span>
+    </div>
+    </Link>
+    <Link to="/gigs?cat=bag">
+    <div className="catCard">
+      <img src="./img/bag.png" alt="" />
+      <span className="title">Bag</span>
     </div>
     </Link>
     </div>

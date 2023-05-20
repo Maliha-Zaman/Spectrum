@@ -1,5 +1,6 @@
 import React from "react";
 import "./Footer.scss";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -27,9 +28,15 @@ function Footer() {
               <img src="/img/pinterest.png" alt="" />
               <img src="/img/instagram.png" alt="" /> */}
             </div>
-            Categories<t/>
+            <Link to="">
+              Categories<t/>
+
+            </Link>
             About<t/>
-            Team <t />
+            <Link to="/team">
+              Team <t />
+
+            </Link>
             <div className="link">
               <img src="/img/language.png" alt="" />
               <span>English</span>
