@@ -115,7 +115,29 @@ const Add = () => {
                 {uploading ? "uploading" : "Upload"}
               </button>
             </div>
+            <label htmlFor="">Delivery Time (e.g. 3 days)</label>
+            <input type="number" name="deliverTime" onChange={handleChange} />
 
+            
+            
+          </div>
+          <div className="details">
+            {/* <label htmlFor="">Service Title</label>
+            <input
+              type="text"
+              name="shortTitle"
+              placeholder="e.g. One-page web design"
+              onChange={handleChange}
+            /> */}
+            {/* <label htmlFor="">Short Description</label>
+            <textarea
+              name="shortDesc"
+              onChange={handleChange}
+              id=""
+              placeholder="Short description of your service"
+              cols="30"
+              rows="10"
+            ></textarea> */}
             <label htmlFor="">Description</label>
             <textarea
               name="desc"
@@ -125,34 +147,14 @@ const Add = () => {
               rows="16"
               onChange={handleChange}
             ></textarea>
-            <button onClick={handleSubmit}>Create</button>
-          </div>
-          <div className="details">
-            <label htmlFor="">Service Title</label>
-            <input
-              type="text"
-              name="shortTitle"
-              placeholder="e.g. One-page web design"
-              onChange={handleChange}
-            />
-            <label htmlFor="">Short Description</label>
-            <textarea
-              name="shortDesc"
-              onChange={handleChange}
-              id=""
-              placeholder="Short description of your service"
-              cols="30"
-              rows="10"
-            ></textarea>
-            <label htmlFor="">Delivery Time (e.g. 3 days)</label>
-            <input type="number" name="deliverTime" onChange={handleChange} />
-            <label htmlFor="">Revision Number</label>
+            
+            {/* <label htmlFor="">Revision Number</label>
             <input
               type="number"
               name="revisionNumber"
               onChange={handleChange}
-            />
-            <label htmlFor="">Add Features</label>
+            /> */}
+            <label htmlFor="">Add Features for Search</label>
             <form action="" className="add" onSubmit={handleFeature}>
               <input type="text" placeholder="e.g. page design" />
               {/* <input type="text" placeholder="e.g. file uploading" />
@@ -174,8 +176,9 @@ const Add = () => {
                 </div>
               ))}
             </div>
-            <label htmlFor="">Price</label>
+            <label htmlFor="">Price per unit</label>
             <input type="number" name="price" onChange={handleChange} />
+          <button onClick={handleSubmit}>Create</button>
           </div>
         </div>
       </div>

@@ -47,7 +47,10 @@ function Navbar() {
           {/* <span>Liverr Business</span>
           <span>Explore</span> */}
           <span>English</span>
-          {!currentUser?.isSeller && <span>Become a Seller</span>}
+          {!currentUser?.isSeller 
+          // && 
+          // <span>Become a Seller</span>
+          }
           {currentUser ? (
             <div className="user" onClick={() => setOpen(!open)}>
               <img src={currentUser.img || "/img/noavatar.jpg"} alt="" />
@@ -79,7 +82,7 @@ function Navbar() {
           ) : (
             <>
               <Link to="/login" className="link">
-                Sign in
+                <button>Login</button>
               </Link>
               <Link className="link" to="/register">
                 <button>Join</button>

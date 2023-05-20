@@ -66,7 +66,7 @@ function Login() {
 
         <button type="submit">
           {/* Login */}
-          {loading ? <>Loading..</> : <>Register</>}
+          {loading ? <>Loading..</> : <>Login</>}
         </button>
         {/* {error && error} */}
       </form>
