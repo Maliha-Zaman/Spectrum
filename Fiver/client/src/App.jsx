@@ -89,11 +89,11 @@ function App() {
           element: <Login />,
         },
         {
-          path: "/pay/:id",
+          path: "/pay/:ids",
           element: <Pay />,
         },
         {
-          path: "/cart/:id",
+          path: "/cart",
           element: <Cart />,
         },
         {

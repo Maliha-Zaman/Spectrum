@@ -11,6 +11,8 @@ const stripePromise = loadStripe(
 );
 
 const Pay = () => {
+  //const [clientSecret, setClientSecret] = useState("");
+  //const [clientSecrets, setClientSecrets] = useState([]);
   const [clientSecret, setClientSecret] = useState("");
 
   const { id } = useParams();
@@ -31,30 +33,48 @@ const Pay = () => {
     //   return <div>{error}</div>;
     // } else {
     const makeRequest = async () => {
-       try {
+      try {
         const res = await newRequest.post(
           `/orders/create-payment-intent/${id}`
         );
+        // const secretsArray = res.data.clientSecrets.split(",");
+        // setClientSecrets(secretsArray);
+        //setClientSecret(res.data.clientSecret);
+        // setClientSecrets(res.data.clientSecrets);
         setClientSecret(res.data.clientSecret);
-       } catch (err) {
+      } catch (err) {
         console.log(err);
         // if (
         //   error.response &&
-        //   error.response.status == 400 
+        //   error.response.status == 400
         // ) {
         //   setError(error.response.data.message);
         // }
         // else {
 
-          setError(
-            "You are not elligible for buying. Please sign in as a buyer to make a purchase"
-          );
+        setError(
+          "You are not elligible for buying. Please sign in as a buyer to make a purchase"
+        );
         // }
       }
     };
     makeRequest();
   }, []);
+  const handlePaymentSuccess = async () => {
+    try {
+      console.log("Before confirm request"); // Log before the request
 
+      //await newRequest.post(`/orders/confirm`);
+      history.push("/success");
+
+      console.log("after confirm request"); // Log before the request
+
+      // Handle successful payment confirmation
+    } catch (err) {
+      console.log(err);
+      // Handle payment confirmation error
+    }
+  };
   const appearance = {
     theme: "stripe",
   };
@@ -65,15 +85,40 @@ const Pay = () => {
 
   return (
     <div className="pay">
-     
       {error && <div className="error">{error}</div>}
       {/* {msg && <div className="error">{setMsg}</div>} */}
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
-          <CheckoutForm />
+          {/* <CheckoutForm /> */}
+          <CheckoutForm onPaymentSuccess={handlePaymentSuccess} />
         </Elements>
       )}
     </div>
+
+    // <div className="pay">
+    //   {error && <div className="error">{error}</div>}
+    //   {clientSecrets.length > 0 && (
+    //     <>
+    //       {clientSecrets.map((clientSecret) => (
+    //         <Elements
+    //           key={clientSecret}
+    //           options={{ clientSecret }}
+    //           stripe={stripePromise}
+    //         >
+    //           <CheckoutForm />
+    //         </Elements>
+    //       ))}
+    //     </>
+    //   )}
+    // </div>
+    // <div className="pay">
+    //   {error && <div className="error">{error}</div>}
+    //   {clientSecrets.length > 0 && (
+    //     <Elements stripe={stripePromise}>
+    //       <CheckoutForm clientSecret={clientSecrets[0]} />
+    //     </Elements>
+    //   )}
+    // </div>
   );
 };
 

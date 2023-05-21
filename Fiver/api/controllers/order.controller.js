@@ -75,37 +75,56 @@ export const intent = async (req, res, next) => {
     return res.status(400).send({ message: "Cart not found" });
   }
   const orders = [];
+  const clientSecrets = [];
+  let totalAmount = 0;
+
   for (const product of cart.products) {
     // const gig = await Gig.findById(req.params.id);
     const gig = await Gig.findById(product.gigId);
-    const paymentIntent = await stripe.paymentIntents.create({
-      amount: product.price * product.quantity * 100,
-      currency: "usd",
-      automatic_payment_methods: {
-        enabled: true,
-      },
-    });
-
+    const amount = product.price * product.quantity * 100;
+    totalAmount += amount;
     const newOrder = new Order({
       gigId: gig._id,
       img: gig.cover,
       title: gig.title,
       buyerId: req.userId,
       sellerId: gig.userId,
-      price: gig.price,
-      price: product.price,
+      //price: gig.price,
+      price: product.price * product.quantity,
       quantity: product.quantity,
-      payment_intent: paymentIntent.id,
+      // payment_intent: paymentIntent.id,
     });
-    // await newOrder.save();
     orders.push(newOrder);
   }
   try {
-    await Order.insertMany(orders);
+    //await Order.insertMany(orders);
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: totalAmount,
+      currency: "usd",
+      automatic_payment_methods: {
+        enabled: true,
+      },
+    });
+    console.log("gig._id");
+    for (const order of orders) {
+      order.payment_intent = paymentIntent.id;
+    }
 
+    await Order.insertMany(orders);
+    console.log("hhhhh");
     res.status(200).send({ clientSecret: paymentIntent.client_secret });
-    //res.status(200).send({ orders: createdOrders });
+    console.log("here");
+    // await newOrder.save();
+    //clientSecrets.push(paymentIntent.client_secret);
   } catch (error) {
+    // try {
+    //   //res.status(200).send({ clientSecrets });
+    //   res.status(200).send({ clientSecrets: clientSecrets.join(",") });
+
+    //   // res.status(200).send({ clientSecret: paymentIntent.client_secret });
+    //   console.log("here");
+    //   //res.status(200).send({ orders: createdOrders });
+    // }
     res.status(500).send({ message: "Failed to create orders" });
   }
 };
@@ -148,19 +167,226 @@ export const getOrders = async (req, res, next) => {
 //   res.status(200).send(user);
 // };
 
+// const orders = await Order.findOneAndUpdate(
+//   {
+//     payment_intent: req.body.payment_intent,
+//   },
+//   {
+//     $set: {
+//       isCompleted: true,
+//     },
+//   }
+// );
+// export const confirm = async (req, res, next) => {
+//   try {
+//     const userId = req.userId;
+
+//     const cart = await Cart.findOne({ userId });
+
+//     if (cart) {
+//       const products = cart.products;
+
+//       const uniqueGigIds = [];
+
+//       // Iterate over each product in the products array
+//       for (const product of products) {
+//         const { gigId, sellerId } = product;
+//         if (!uniqueGigIds.includes(gigId)) {
+//           uniqueGigIds.push(gigId);
+//           // Update the corresponding order to mark it as complete
+//           await Order.updateMany(
+//             {
+//               gigId: product.gigId,
+//               sellerId: product.sellerId,
+//               isCompleted: false,
+//             },
+//             {
+//               $set: {
+//                 isCompleted: true,
+//               },
+//             }
+//           );
+//         }
+//       }
+//     }
+//     res.status(200).send("Order has been confirmed.");
+//   } catch (err) {
+//     next(err);
+//   }
+// };
+// export const confirm = async (req, res, next) => {
+//   try {
+//     const userId = req.userId;
+
+//     const cart = await Cart.findOne({ userId });
+
+//     if (cart) {
+//       const products = cart.products;
+//       // const uniqueGigIds = [];
+//       const uniqueGigIds = new Set();
+
+//       for (const product of products) {
+//         const { gigId, sellerId } = product;
+
+//         if (!uniqueGigIds.has(gigId)) {
+//           uniqueGigIds.add(gigId);
+
+//           await Order.updateOne(
+//             {
+//               gigId,
+//               sellerId,
+//               isCompleted: false,
+//             },
+//             {
+//               $set: {
+//                 isCompleted: true,
+//               },
+//             }
+//           );
+
+//           // Remove the processed product from the cart
+//           await Cart.findOneAndUpdate(
+//             { userId },
+//             {
+//               $pull: {
+//                 products: {
+//                   gigId,
+//                   sellerId,
+//                 },
+//               },
+//             }
+//           );
+//         }
+//       }
+//     }
+
+//     res.status(200).send("Order has been confirmed.");
+//   } catch (err) {
+//     next(err);
+//   }
+// };
+
+// const cart = await Cart.findOne({ userId });
+// console.log("paymentafterhere");
+// if (cart) {
+//   for (const product of cart.products) {
+//     const { gigId, sellerId } = product;
+//     console.log("paymentafterhere2");
+
+//     const existingOrder = await Order.findOne({
+//       gigId: product.gigId,
+//       sellerId: product.sellerId,
+//       buyerId: userId,
+//       isCompleted: false,
+//     });
+//     console.log("paymentafterhere3");
+
+//     if (existingOrder) {
+//       existingOrder.isCompleted = true;
+//       await existingOrder.save();
+//       console.log("paymentafterhere4");
+
+//       // Remove the processed product from the cart
+//       await Cart.findOneAndUpdate(
+//         { userId },
+//         {
+//           $pull: {
+//             products: {
+//               gigId,
+//               sellerId,
+//             },
+//           },
+//         }
+//       );
+//       console.log("paymentafterhere5");
+//     }
+//   }
+//   await Cart.deleteMany({ userId });
+//   console.log("paymentafterhereloop");
+// }
+// console.log("paymentdone");
+
+// res.status(200).send("Order has been confirmed.");
 export const confirm = async (req, res, next) => {
   try {
-    const orders = await Order.findOneAndUpdate(
-      {
-        payment_intent: req.body.payment_intent,
-      },
-      {
-        $set: {
-          isCompleted: true,
-        },
-      }
-    );
+    // const userId = req.userId;
+    console.log("kkkkkkkkkkkkkhere");
+    const userId = req.userId;
+    console.log(userId);
+    const cart = await Cart.findOne({ userId: userId });
+    console.log(cart.products.id);
+    if (cart) {
+      const productCount = cart.products.length;
 
+      cart.products.forEach(async (product) => {
+        console.log(product);
+        //console.log(product);
+
+        //const { gigId, sellerId } = product;
+        //console.log("paymentafterhere2");
+        await Order.findOneAndUpdate(
+          {
+            gigId: product.gigId,
+            // sellerId: product.sellerId,
+            // buyerId: userId,
+            // isCompleted: false,
+          },
+          { $set: { isCompleted: true } }
+          // { upsert: false }
+        );
+        // Delete the remaining duplicate documents
+        // await Order.deleteMany({
+        //   gigId: product.gigId,
+        //   sellerId: product.sellerId,
+        //   buyerId: userId,
+        //   isCompleted: false,
+        // });
+
+        // const existingOrder = await Order.findOne({
+        //   gigId: product.gigId,
+        //   sellerId: product.sellerId,
+        //   buyerId: userId,
+        //   isCompleted: false,
+        // });
+        // // console.log("paymentafterhere3");
+        // // console.log(existingOrder);
+
+        // if (existingOrder) {
+        //   // existingOrder.isCompleted = true;
+        //   // await existingOrder.save();
+        //   // console.log("paymentafterupdate");
+        //   await Order.findOneAndUpdate(
+        //     {
+        //       gigId: product.gigId,
+        //       sellerId: product.sellerId,
+        //       buyerId: userId,
+        //       isCompleted: false,
+        //     },
+        //     { $set: { isCompleted: true } }
+        //   );
+        // console.log("paymentafterupdate");
+
+        // Remove the processed product from the cart
+        await Cart.findOneAndUpdate(
+          { userId: userId },
+          {
+            $pull: {
+              products: {
+                gigId: product.gigId,
+                sellerId: product.sellerId,
+              },
+            },
+          }
+        );
+        // console.log("paymentafterdelete");
+      });
+      // }
+
+      await Cart.deleteMany({ userId });
+      // console.log("paymentafterloop");
+    }
+
+    console.log("paymentafterhere5");
     res.status(200).send("Order has been confirmed.");
   } catch (err) {
     next(err);

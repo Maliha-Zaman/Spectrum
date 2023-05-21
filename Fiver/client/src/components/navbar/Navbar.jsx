@@ -47,14 +47,18 @@ function Navbar() {
           {/* <span>Liverr Business</span>
           <span>Explore</span> */}
           {/* <span>English</span> */}
-          {!currentUser?.isSeller 
-          // && 
-          // <span>Become a Seller</span>
+          {
+            !currentUser?.isSeller
+            // &&
+            // <span>Become a Seller</span>
           }
           {currentUser ? (
             <div className="user" onClick={() => setOpen(!open)}>
               <img src={currentUser.img || "/img/noavatar.jpg"} alt="" />
               <span>{currentUser?.username}</span>
+              <Link className="link" to="/cart">
+                Cart<span>0</span>
+              </Link>
               {open && (
                 <div className="options">
                   {currentUser.isSeller && (

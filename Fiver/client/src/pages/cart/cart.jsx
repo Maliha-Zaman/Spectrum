@@ -95,6 +95,8 @@ import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../../../api/utils/newRequest";
 import { useNavigate } from "react-router-dom";
 const Orders = () => {
+  const { id } = useParams();
+
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const navigate = useNavigate();
   const { isLoading, error, data } = useQuery({
@@ -104,7 +106,9 @@ const Orders = () => {
         return res.data;
       }),
   });
-
+  const handlePay = (cartId) => {
+    navigate(`/pay/${cartId}`);
+  };
   return (
     <div className="orders">
       {isLoading ? (
@@ -117,43 +121,43 @@ const Orders = () => {
             <h1>Cart</h1>
           </div>
           <table>
-            <tr>
-              <th>Title</th>
-              {/* <th>Image</th> */}
-              <th>Price</th>
-              <th>Quantity</th>
-            </tr>
-            {data.map((cart) => (
-              <tr key={card._id}>
-                {/* <td>
-                  <img className="image" src={cart.products.title} alt="" />
-                </td>
-                <td>{cart.products.price}</td>
-                <td>{cart.products.quantity}</td> */}
-
-                {/* <td>
-                  <img
-                    className="message"
-                    src="./img/message.png"
-                    alt=""
-                    onClick={() => handleContact(order)}
-                  />
-
-                  
-                </td> */}
-                {cart.products.map((product) => (
-                  <React.Fragment key={product.gigId}>
-                    <td>{product.title}</td>
-                    <td>{product.price}</td>
-                    <td>{product.quantity}</td>
-                  </React.Fragment>
-                ))}
+            <thead>
+              <tr>
+                <th>Title</th>
+                {/* <th>Image</th> */}
+                <th>Price</th>
+                <th>Quantity</th>
               </tr>
-            ))}
-            <Link to={`/pay/${cart._id}`}>
+            </thead>
+            <tbody>
+              {data.map((cart) => (
+                <React.Fragment key={cart._id}>
+                  {cart.products.map((product) => (
+                    <tr key={product.gigId}>
+                      <td>{product.title}</td>
+                      <td>{product.price}</td>
+                      <td>{product.quantity}</td>
+                    </tr>
+                  ))}
+                </React.Fragment>
+              ))}
+              <tr>
+                {/* <td colSpan="3">
+                </td> */}
+              </tr>
+              {/* <Link to={`/pay/${cart._id}`}>
+              <button>Continue</button>
+            </Link> */}
+            </tbody>
+          </table>
+          {/* {data.length > 0 && (
+            <button onClick={() => handlePay(data[0]._id)}>Continue</button>
+          )} */}
+          {data.length > 0 && (
+            <Link to={`/pay/${data[0]._id}`}>
               <button>Continue</button>
             </Link>
-          </table>
+          )}
         </div>
       )}
     </div>
