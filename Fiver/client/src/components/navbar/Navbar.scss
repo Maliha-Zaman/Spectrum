@@ -119,4 +119,20 @@
     
     }
   }
+    .cart-icon {
+      display: inline-block;
+      position: relative;
+      width: 30px;
+      height: 30px;
+      margin-left: 10px;
+      /* Adjust the margin as needed */
+    }
   
+    .cart-icon i {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 20px;
+      color: #000;
+    }

@@ -65,7 +65,11 @@ function Navbar() {
                       <Link className="link" to="/add">
                         Add New Product
                       </Link>
+                        <div className="cart-icon">
+                <ShoppingCart />
+              </div>
                     </>
+        
                   )}
                   <Link className="link" to="/orders">
                     Orders
@@ -87,12 +91,15 @@ function Navbar() {
               <Link className="link" to="/register">
                 <button>Join</button>
               </Link>
+          
+
             </>
           )}
         </div>
       </div>
       {(active || pathname !== "/") && (
         <>
+        <script src="https://kit.fontawesome.com/0ba00a17f9.js" crossorigin="anonymous"></script>
           <hr />
           <div className="menu">
             <Link className="link menuLink" to="/gigs?cat=shirt">
