@@ -1,9 +1,7 @@
-
 import React, { useState } from "react";
 import "./Login.scss";
 
 import { Link, useNavigate } from "react-router-dom";
-
 
 import newRequest from "../../../../api/utils/newRequest";
 
@@ -57,7 +55,7 @@ function Login() {
               type="text"
               placeholder="johndoe"
               onChange={(e) => setUsername(e.target.value)}
-              />
+            />
 
             <label htmlFor="">Password</label>
             <input
@@ -65,20 +63,19 @@ function Login() {
               type="password"
               placeholder="password"
               onChange={(e) => setPassword(e.target.value)}
-              />
+            />
             {error && <div className="error">{error}</div>}
             {/* {msg && <div className="error">{setMsg}</div>} */}
-            <p>Don't have an account? <Link to="/register">
-              Sign up
-            </Link>
+            <p>
+              Don't have an account? <Link to="/register">Sign up</Link>
             </p>
-            
+
             <button type="submit">
               {/* Login */}
               {loading ? <>Loading..</> : <>Login</>}
             </button>
             {/* {error && error} */}
-        </form>
+          </form>
         </div>
       </div>
     </div>
