@@ -68,14 +68,14 @@ const Reviews = ({ gigId }) => {
         <h3>Add a review</h3>
         <form action="" className="addForm" onSubmit={handleSubmit}>
           <input type="text" placeholder="Write your review" />
-          <select name="" id="">
+          {/* <select name="" id="">
             <option value={1}>1</option>
             <option value={2}>2</option>
             <option value={3}>3</option>
             <option value={4}>4</option>
             <option value={5}>5</option>
-          </select>
-          {/* <div>
+          </select> */}
+          <div>
           <h3>Rating:</h3> <br />
             <span>Rate this product on a scale of 5: </span> <br />
             {[1, 2, 3, 4, 5].map((value) => (
@@ -90,7 +90,7 @@ const Reviews = ({ gigId }) => {
                 {value}<br />
               </label>
             ))}
-          </div> */}
+          </div>
           {errorMessage && <div className="error">{errorMessage}</div>}
 
           <button>Send</button>
