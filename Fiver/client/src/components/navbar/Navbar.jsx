@@ -51,23 +51,13 @@ function Navbar() {
             // <span>Become a Seller</span>
           }
           {currentUser ? (
+            <div className="carts">
+        
             <div className="user" onClick={() => setOpen(!open)}>
-              {!currentUser.isSeller && (
-                <>
-                  <Link className="link" to="/cart">
-                    Cart<span>0</span>
-                  </Link>
-                </>
-              )}
+             
               <img src={currentUser.img || "/img/noavatar.jpg"} alt="" />
               <span>{currentUser?.username}</span>
-                        {!currentUser.isSeller && (
-            <>
-              <Link className="link" to="/cart">
-                Cart<span>0</span>
-              </Link>
-            </>
-          )}
+                        
               {open && (
                 <div className="options">
                   {currentUser.isSeller && (
@@ -92,6 +82,16 @@ function Navbar() {
                 </div>
               )}
             </div>
+                  <div className="carts2">
+              {!currentUser.isSeller && (
+                        <>
+              <Link className="link" to="/cart">
+                Cart
+              </Link>
+            </>
+          )}
+          </div>
+            </div>
           ) : (
             <>
               <Link to="/login" className="link">
@@ -102,7 +102,6 @@ function Navbar() {
               </Link>
             </>
           )}
-
         </div>
       </div>
       {(active || pathname !== "/") && (
