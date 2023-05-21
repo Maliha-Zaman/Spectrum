@@ -1,13 +1,18 @@
-// import express from "express";
-// import { cart } from "../controllers/cart.controller.js";
+import express from "express";
+import { getfromcart, posttocart } from "../controllers/cart.controller.js";
+import { verifyToken } from "../middleware/jwt.js";
 
-// const router = express.Router();
+const router = express.Router();
 
-// router.get("/cart/:id", cart);
-// // router.post("/login", login);
-// // router.post("/logout", logout);
-// // router.get("/:id/verify/:token/", verifytoken);
-// // import { deleteUser } from "../controllers/user.controller.js";
-// // import { verifyToken } from "../middleware/jwt.js";
+// router.get("/:id", verifyToken, getfromcart);
+router.get("/", verifyToken, getfromcart);
 
-// export default router;
+router.post("/:id", verifyToken, posttocart);
+
+// router.post("/login", login);
+// router.post("/logout", logout);
+// router.get("/:id/verify/:token/", verifytoken);
+// import { deleteUser } from "../controllers/user.controller.js";
+// import { verifyToken } from "../middleware/jwt.js";
+
+export default router;

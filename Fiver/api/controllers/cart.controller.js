@@ -1,99 +1,126 @@
-// import Gig from "../models/gig.model.js";
-// import Order from "../models/order.model.js";
+import Cart from "../models/cart.model.js";
+import Gig from "../models/gig.model.js";
+import User from "../models/user.model.js";
 
-// import getCurrentUser from "../utils/getCurrentUser.js";
-// export const intent = async (req, res, next) => {
+import getCurrentUser from "../utils/getCurrentUser.js";
 
-//   const stripe = new Stripe(process.env.STRIPE);
-//   const gig = await Gig.findById(req.params.id);
-//   const orders = await Gig.findOne({
-//     //...(req.isSeller ? { sellerId: req.userId } : { buyerId: req.userId }),
-//     userId: req.userId,
-   
-//   });
-//   if (orders && orders.userId != null) {
-//     console.log(orders.userId);
-//     return res.status(400).send({ message: "You can not buy your own gig" }); //throw new Error("Passwords must be same");
-//   } else {
-//     console.log("No orders found for the user");
+export const posttocart = async (req, res, next) => {
+  try {
+    console.log("Cart");
+    // const gigowner = await Gig.findOne({
+    //   //...(req.isSeller ? { sellerId: req.userId } : { buyerId: req.userId }),
+    //   userId: req.userId,
+    // });
+    // if (gigowner && gigowner.userId != null) {
+    //   console.log(orders.userId);
+    //   //   return res.status(400).send({ message: "You can not buy your own gig" }); //throw new Error("Passwords must be same");
+    //   return res.json({ message: "You can not buy your own product" });
+    // }
+    const seller = await User.findOne({
+      //...(req.isSeller ? { sellerId: req.userId } : { buyerId: req.userId }),
+      _id: req.userId,
+    });
+    if (seller.isSeller) {
+      //   console.log(orders.userId);
+      //   return res.status(400).send({ message: "You can not buy your own gig" }); //throw new Error("Passwords must be same");
+      return res.json({ message: "You are not elligible to buy products" });
+    }
+    const userId = req.userId;
+    const { id } = req.params;
+    //const gig = await Gig.findById(req.params.id);
+    const newproduct = await Gig.findOne({
+      //...(req.isSeller ? { sellerId: req.userId } : { buyerId: req.userId }),
+      _id: req.params.id,
+    });
+    console.log(newproduct);
+    const cart = await Cart.findOne({ userId });
 
-//   }
+    //   const updatedCart = await Cart.findOneAndUpdate(
+    //     { userId: userId },
+    //     {
+    //       $push: {
+    //         products: {
+    //           gigId: id,
+    //           sellerId: product.userId,
+    //           price: product.price,
+    //           //quantity: quantity + 1,
+    //         },
+    //       },
+    //     }
+    //   );
+    //   cart.products = cart.products.concat(
+    //     products.map((newproduct) => ({
+    //       gigId: id,
+    //       sellerId: newproduct.userId,
+    //       price: newproduct.price,
+    //       //quantity: quantity + 1,
+    //     }))
+    //   );
+    //   await cart.save();
+    if (cart) {
+      console.log("Existing cart found");
 
-//   const paymentIntent = await stripe.paymentIntents.create({
-//     amount: gig.price * 100,
-//     currency: "usd",
-//     automatic_payment_methods: {
-//       enabled: true,
-//     },
-//   });
-//   const newOrder = new Order({
-//     gigId: gig._id,
-//     img: gig.cover,
-//     title: gig.title,
-//     buyerId: req.userId,
-//     sellerId: gig.userId,
-//     price: gig.price,
-//     payment_intent: paymentIntent.id,
-//   });
-//   await newOrder.save();
+      const updatedCart = await Cart.findOneAndUpdate(
+        { userId: userId },
+        {
+          $push: {
+            products: {
+              gigId: id,
+              sellerId: newproduct.userId,
+              price: newproduct.price,
+              title: newproduct.title,
+            },
+          },
+        },
+        { new: true }
+      );
+      res.json({ message: "Product added to cart" });
 
-//   res.status(200).send({ clientSecret: paymentIntent.client_secret });
-// };
-// // export const createOrder = async (req, res, next) => {
-// //   try {
-// //     const gig = await Gig.findById(req.params.gigId);
-// //     const newOrder = new Order({
-// //       gigId: gig._id,
-// //       img: gig.cover,
-// //       title: gig.title,
-// //       buyerId: req.userId,
-// //       sellerId: gig.userId,
-// //       price: gig.price,
-// //       payment_intent: "temporary",
-// //     });
-// //     await newOrder.save();
+      console.log("Cart  found");
 
-// //     res.status(200).send("successful");
-// //   } catch (err) {
-// //     next(err);
-// //   }
-// // };
-// export const getOrders = async (req, res, next) => {
-//   try {
-//     const orders = await Order.find({
-//       //...(req.isSeller ? { sellerId: req.userId } : { buyerId: req.userId }),
-//       buyerId: req.userId,
-//       isCompleted: true,
-//     });
-// // console.log("uuuu");
-//     res.send(orders);
-//     // status(200)
-//   } catch (err) {
-//     next(err);
-//   }
-// };
-// // export const getUser = async (req, res, next) => {
-// //   const user = await User.findById(req.params.id);
+      if (!updatedCart) {
+        // Handle case where cart document doesn't exist for the user
+        console.log("Cart nottttt found");
+        //return;
+      }
 
-// //   res.status(200).send(user);
-// // };
+      console.log("Product added to cart");
+    } else {
+      console.log("No existing cart found");
+      console.log("Something happened. Please try again");
+      console.log(userId);
+      const addnewProduct = new Cart({
+        userId: userId,
+        products: {
+          gigId: id,
+          sellerId: newproduct.userId,
+          price: newproduct.price,
+          title: newproduct.title,
+        },
+      });
+      await addnewProduct.save();
+      res.json({ message: "Product added to cart" });
+    }
+  } catch (err) {
+    next(err);
+    //res.send("Something wrong. Please try again");
 
-// export const confirm = async (req, res, next) => {
-//   try {
-//     const orders = await Order.findOneAndUpdate(
-//       {
-//         payment_intent: req.body.payment_intent,
-//       },
-//       {
-//         $set: {
-//           isCompleted: true,
-//         },
-//       }
-//     );
+    console.log("directed wrong");
+  }
+};
+//
 
-//     res.status(200).send("Order has been confirmed.");
-//   } catch (err) {
-//     next(err);
-//   }
-// };
+export const getfromcart = async (req, res, next) => {
+  try {
+    const cart = await Cart.find({
+      //...(req.isSeller ? { sellerId: req.userId } : { buyerId: req.userId }),
+      userId: req.userId,
+    });
+    // console.log("uuuu");
+    res.send(cart);
+    // status(200)
+  } catch (err) {
+    next(err);
+  }
+};
 //
