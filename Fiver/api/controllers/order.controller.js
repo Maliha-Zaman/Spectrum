@@ -314,19 +314,23 @@ export const confirm = async (req, res, next) => {
     const userId = req.userId;
     console.log(userId);
     const cart = await Cart.findOne({ userId: userId });
-    console.log(cart.products.id);
+    console.log(cart.products);
     if (cart) {
       const productCount = cart.products.length;
 
       cart.products.forEach(async (product) => {
         console.log(product);
         //console.log(product);
+        const fiveSecondsAgo = new Date(Date.now() - 60000); // Subtract 5 seconds from the current timestamp
 
         //const { gigId, sellerId } = product;
         //console.log("paymentafterhere2");
         await Order.findOneAndUpdate(
           {
+            createdAt: { $gte: fiveSecondsAgo },
             gigId: product.gigId,
+            createdBy: userId,
+
             // sellerId: product.sellerId,
             // buyerId: userId,
             // isCompleted: false,
@@ -334,39 +338,15 @@ export const confirm = async (req, res, next) => {
           { $set: { isCompleted: true } }
           // { upsert: false }
         );
-        // Delete the remaining duplicate documents
-        // await Order.deleteMany({
-        //   gigId: product.gigId,
-        //   sellerId: product.sellerId,
-        //   buyerId: userId,
-        //   isCompleted: false,
-        // });
 
-        // const existingOrder = await Order.findOne({
-        //   gigId: product.gigId,
-        //   sellerId: product.sellerId,
-        //   buyerId: userId,
-        //   isCompleted: false,
-        // });
-        // // console.log("paymentafterhere3");
-        // // console.log(existingOrder);
+        const gigId = product.gigId;
+        const quantityToSubtract = parseInt(product.quantity);
 
-        // if (existingOrder) {
-        //   // existingOrder.isCompleted = true;
-        //   // await existingOrder.save();
-        //   // console.log("paymentafterupdate");
-        //   await Order.findOneAndUpdate(
-        //     {
-        //       gigId: product.gigId,
-        //       sellerId: product.sellerId,
-        //       buyerId: userId,
-        //       isCompleted: false,
-        //     },
-        //     { $set: { isCompleted: true } }
-        //   );
-        // console.log("paymentafterupdate");
+        await Gig.findOneAndUpdate(
+          { _id: gigId, userId: product.sellerId },
+          { $inc: { quantity: -quantityToSubtract } }
+        );
 
-        // Remove the processed product from the cart
         await Cart.findOneAndUpdate(
           { userId: userId },
           {
