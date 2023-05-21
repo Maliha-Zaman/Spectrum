@@ -52,9 +52,15 @@ function Navbar() {
           }
           {currentUser ? (
             <div className="user" onClick={() => setOpen(!open)}>
+              {!currentUser.isSeller && (
+                <>
+                  <Link className="link" to="/cart">
+                    Cart<span>0</span>
+                  </Link>
+                </>
+              )}
               <img src={currentUser.img || "/img/noavatar.jpg"} alt="" />
               <span>{currentUser?.username}</span>
-              
               {open && (
                 <div className="options">
                   {currentUser.isSeller && (
@@ -86,13 +92,6 @@ function Navbar() {
               </Link>
               <Link className="link" to="/register">
                 <button>Join</button>
-              </Link>
-            </>
-          )}
-          {!currentUser.isSeller && (
-            <>
-              <Link className="link" to="/cart">
-                Cart<span>0</span>
               </Link>
             </>
           )}
