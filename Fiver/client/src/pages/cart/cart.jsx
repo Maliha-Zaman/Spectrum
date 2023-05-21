@@ -91,7 +91,7 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import "./cart.scss";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation,useQuery } from "@tanstack/react-query";
 import newRequest from "../../../../api/utils/newRequest";
 import { useNavigate } from "react-router-dom";
 const Orders = () => {
@@ -106,8 +106,20 @@ const Orders = () => {
         return res.data;
       }),
   });
+  const mutation = useMutation({
+    mutationFn: (id) => {
+      return newRequest.delete(`/cart/${id}`);
+    },
+
+    onSuccess: () => {
+      queryClient.invalidateQueries(["cart"]);
+    },
+  })
   const handlePay = (cartId) => {
     navigate(`/pay/${cartId}`);
+  };
+   const handleDelete = (id) => {
+    mutation.mutate(id);
   };
   return (
     <div className="orders">
@@ -127,6 +139,7 @@ const Orders = () => {
                 {/* <th>Image</th> */}
                 <th>Price</th>
                 <th>Quantity</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -137,6 +150,14 @@ const Orders = () => {
                       <td>{product.title}</td>
                       <td>{product.price}</td>
                       <td>{product.quantity}</td>
+                  <td>
+                  <img
+                    className="delete"
+                    src="./img/delete.png"
+                    alt=""
+                    onClick={() => handleDelete(product.gigId)}
+                  />
+                </td>
                     </tr>
                   ))}
                 </React.Fragment>
