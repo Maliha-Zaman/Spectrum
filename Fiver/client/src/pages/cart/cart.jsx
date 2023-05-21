@@ -106,7 +106,7 @@ const Orders = () => {
       newRequest.get(`/cart`).then((res) => {
         return res.data;
       }),
-    staleTime: 1000,
+   // staleTime: 1000,
   });
   const mutation = useMutation({
     mutationFn: (id) => {
