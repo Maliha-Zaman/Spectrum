@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./cart.scss";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -16,7 +16,7 @@ const Orders = () => {
       newRequest.get(`/cart`).then((res) => {
         return res.data;
       }),
-   // staleTime: 1000,
+    // staleTime: 1000,
   });
   const mutation = useMutation({
     mutationFn: (id) => {
@@ -25,10 +25,19 @@ const Orders = () => {
 
     onSuccess: () => {
       queryClient.invalidateQueries(["cart"]);
+      // window.location.reload();
     },
   });
+  // Watch the mutation's isSuccess status
+  // useEffect(() => {
+  //   if (mutation.isSuccess) {
+  //     // Trigger the page refresh
+  //     window.location.reload();
+  //   }
+  // }, [mutation.isSuccess]);
   const handleDelete = (id) => {
     mutation.mutate(id);
+    // Reload the entire page
   };
 
   const handlePay = (cartId) => {
