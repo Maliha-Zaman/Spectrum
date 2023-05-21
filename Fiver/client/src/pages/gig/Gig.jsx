@@ -217,9 +217,16 @@ function Gig() {
               <button onClick={handleSubmit}>Continue</button>
             </Link> */}
             {message && <p>{message}</p>}
-            <button onClick={addToCart}>
+            {/* <button onClick={addToCart} disabled={data.quantity === 0}>
               {loading ? <>Loading..</> : <>Add to cart</>}
-            </button>
+            </button> */}
+            {data.quantity === 0 ? (
+              <button disabled>Sold Out</button>
+            ) : (
+              <button onClick={addToCart} disabled={loading}>
+                {loading ? "Loading..." : "Add to Cart"}
+              </button>
+            )}
           </div>
         </div>
       )}
