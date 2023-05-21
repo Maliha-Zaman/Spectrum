@@ -74,7 +74,7 @@ function Register() {
           <input
             name="username"
             type="text"
-            placeholder="johndoe"
+            placeholder="username"
             required
             onChange={handleChange}
           />
