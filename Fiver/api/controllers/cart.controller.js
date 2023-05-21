@@ -175,7 +175,8 @@ export const deletefromcart = async (req, res, next) => {
     // else {
     //   res.status(200).send("Product has been deleted!");
     // }
-    res.status(200).send("Product has been deleted!");
+    //res.status(200).send("Product has been deleted!");
+    console.log("Product has been deleted");
   } catch (err) {
     next(err);
   }
