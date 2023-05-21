@@ -71,13 +71,13 @@ const Review = ({review}) =>
                 <p>
                   {review.desc}
                 </p>
-                <div className="helpful">
+                {/* <div className="helpful">
                   <span>Helpful?</span>
                   <img src="/img/like.png" alt="" />
                   <span>Yes</span>
                   <img src="/img/dislike.png" alt="" />
                   <span>No</span>
-                </div>
+                </div> */}
               </div>
          
   );

@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 
 function Register() {
   const [file, setFile] = useState(null);
-  const [msg, setMsg] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [msg, setMsg] = useState("");
   const [loading, setLoading] = useState(false);
 
   const [user, setUser] = useState({
