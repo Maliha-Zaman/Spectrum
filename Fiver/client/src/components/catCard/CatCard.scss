@@ -60,7 +60,15 @@
     font-size:24px;
     font-weight: 500;
     text-decoration: none;
+    color: #000;
+
   }
+}
+.catCard .title:visited{
+  text-decoration: none;
+}
+a:visited {
+  text-decoration: none;
 }
 
 .catCard img {

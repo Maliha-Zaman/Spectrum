@@ -83,7 +83,7 @@ function Gig() {
                 <img key={img} src={img} alt="" />
               ))}
             </Slider>
-            <h2>About This Gig</h2>
+            <h2>About This Product</h2>
             <p>{data.desc}</p>
             {isLoadingUser ? (
               "loading"
@@ -108,7 +108,7 @@ function Gig() {
                         </span>
                       </div>
                     )}
-                    <button>Contact Me</button>
+                    {/* <button>Contact Me</button> */}
                   </div>
                 </div>
                 <div className="box">
@@ -143,23 +143,23 @@ function Gig() {
           </div>
           <div className="right">
             <div className="price">
-              <h3>{data.shortTitle}</h3>
+              <h3>{data.title}</h3>
               <h2>Tk {data.price}</h2>
             </div>
             <p>
               {/* I will create a unique high quality AI generated image based on a
             description that you give me */}
-              {data.shortDesc}
+              {/* {data.shortDesc} */}
             </p>
             <div className="details">
               <div className="item">
                 <img src="/img/clock.png" alt="" />
-                <span>{data.deliveryDate}</span>
+                <span>{data.deliveryTime} days</span>
               </div>
-              <div className="item">
+              {/* <div className="item">
                 <img src="/img/recycle.png" alt="" />
                 <span>{data.revisionNumber}</span>
-              </div>
+              </div> */}
             </div>
             {/* <div className="features">
             <div className="item">

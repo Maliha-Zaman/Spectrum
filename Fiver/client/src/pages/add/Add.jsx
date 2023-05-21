@@ -116,7 +116,7 @@ const Add = () => {
               </div>
             </div>
             <label htmlFor="">Delivery Time (e.g. 3 days)</label>
-            <input type="number" name="deliverTime" onChange={handleChange} />
+            <input type="number" name="deliveryTime" onChange={handleChange} />
 
             
             
