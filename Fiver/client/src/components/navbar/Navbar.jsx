@@ -42,19 +42,9 @@ function Navbar() {
           {/* <span className="dot">.</span> */}
         </div>
         <div className="links">
-          {/* <span>Liverr Business</span>
-          <span>Explore</span> */}
-          {/* <span>English</span> */}
           {!currentUser?.isSeller}
           {currentUser ? (
             <div className="user" onClick={() => setOpen(!open)}>
-              {/* {!currentUser.isSeller && (
-                <>
-                  <Link className="link" to="/cart">
-                    Cart<span>0</span>
-                  </Link>
-                </>
-              )} */}
               <img src={currentUser.img || "/img/noavatar.jpg"} alt="" />
               <span>{currentUser?.username}</span>
               {!currentUser.isSeller && (
