@@ -42,22 +42,18 @@ function Navbar() {
           {/* <span className="dot">.</span> */}
         </div>
         <div className="links">
-
-          {
-            !currentUser?.isSeller
-          }
+          {!currentUser?.isSeller}
           {currentUser ? (
             <div className="user" onClick={() => setOpen(!open)}>
-              
               <img src={currentUser.img || "/img/noavatar.jpg"} alt="" />
               <span>{currentUser?.username}</span>
-                        {!currentUser.isSeller && (
-            <>
-              <Link className="link" to="/cart">
-                Cart<span>0</span>
-              </Link>
-            </>
-          )}
+              {!currentUser.isSeller && (
+                <>
+                  <Link className="link" to="/cart">
+                    Cart<span>0</span>
+                  </Link>
+                </>
+              )}
 
               {open && (
                 <div className="options">
@@ -93,7 +89,6 @@ function Navbar() {
               </Link>
             </>
           )}
-
         </div>
       </div>
       {(active || pathname !== "/") && (
