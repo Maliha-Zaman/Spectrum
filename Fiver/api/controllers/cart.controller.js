@@ -37,32 +37,59 @@ export const posttocart = async (req, res, next) => {
 
     if (cart) {
       console.log("Existing cart found");
+      // Check if the cart already contains the product
+      const existingProductIndex = cart.products.findIndex(
+        (product) => product.gigId === id
+      );
 
-      const updatedCart = await Cart.findOneAndUpdate(
-        { userId: userId },
-        {
-          $push: {
-            products: {
-              gigId: id,
-              sellerId: newproduct.userId,
-              price: newproduct.price,
-              title: newproduct.title,
+      if (existingProductIndex !== -1) {
+        console.log("Existing cart with existing product found");
+        // Increase the quantity of the existing product in the cart
+        const updatedCartforsameproduct = await Cart.findOneAndUpdate(
+          {
+            userId: userId,
+            "products.gigId": id,
+          },
+          {
+            $inc: { "products.$.quantity": 1 },
+          },
+          { new: true }
+        );
+        res.json({ message: "Product added to cart" });
+        if (!updatedCartforsameproduct) {
+          // Handle case where cart document doesn't exist for the user
+          console.log("Cart nottttt found");
+          //return;
+        }
+
+        console.log("Product added to previous product cart");
+      } else {
+        const updatedCart = await Cart.findOneAndUpdate(
+          { userId: userId },
+          {
+            $push: {
+              products: {
+                gigId: id,
+                sellerId: newproduct.userId,
+                price: newproduct.price,
+                title: newproduct.title,
+              },
             },
           },
-        },
-        { new: true }
-      );
-      res.json({ message: "Product added to cart" });
+          { new: true }
+        );
+        res.json({ message: "Product added to cart" });
 
-      console.log("Cart  found");
+        console.log("Cart  found");
 
-      if (!updatedCart) {
-        // Handle case where cart document doesn't exist for the user
-        console.log("Cart nottttt found");
-        //return;
+        if (!updatedCart) {
+          // Handle case where cart document doesn't exist for the user
+          console.log("Cart nottttt found");
+          //return;
+        }
+
+        console.log("Product added to cart");
       }
-
-      console.log("Product added to cart");
     } else {
       console.log("No existing cart found");
       console.log("Something happened. Please try again");
