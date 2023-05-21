@@ -35,12 +35,15 @@ const Success = () => {
   const { search } = useLocation();
   const navigate = useNavigate();
   const params = new URLSearchParams(search);
-  const payment_intent = params.get("payment_intent");
+  const paymentIntent = params.get("payment_intent");
 
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        await newRequest.put("/orders", { payment_intent });
+        console.log("order here");
+        await newRequest.post(`/orders/confirm`);
+        // console.log("order after");
+
         setTimeout(() => {
           navigate("/orders");
         }, 2000);
@@ -50,7 +53,7 @@ const Success = () => {
     };
 
     makeRequest();
-  }, []);
+  }, [navigate, paymentIntent]);
 
   return (
     <div>

@@ -17,6 +17,14 @@ export const register = async (req, res, next) => {
 
     if (req.body.password !== req.body.cpassword)
       return res.status(400).send({ message: "Passwords do not match!" }); //throw new Error("Passwords must be same");
+        
+      const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
+    if (!passwordRegex.test(req.body.password)) {
+      return res.status(400).send({
+        message:
+          "Password must contain at least 8 characters including uppercase and lowercase letters, numbers, and special symbols.",
+      });
+    }
 
     const hash = bcrypt.hashSync(req.body.password, 5);
     const newUser = new User({ ...req.body, password: hash });
@@ -47,32 +55,11 @@ export const register = async (req, res, next) => {
 //
 export const verifytoken = async (req, res, next) => {
   try {
-    // const currentUser = getCurrentUser();
-    //`/gigs?userId=${currentUser._id}`)
-    //const user = await User.findOne({ req.body.user.id: req.params.id });
-    // const user = await User.findOne({ UserId: req.params.id });
+
     console.log("99");
     const user = await User.findOne({ _id: req.params.id });
     console.log(user);
 
-    //    app.get("/users/:id", (req, res) => {
-    // const userId = req.params.id;
-    // Use the userId variable as needed
-    // }
-    // );
-    // const userparam = req.params.id;
-
-    // const user = await User.findOne({ userparam });
-    // const user = await User.findOne({
-    //   id: req.body.id,
-    //   "req.params.id": req.params.id,
-    // });
-    // const user = await User.findOne({
-    //   _id: currentUser._id,
-    //   _id: req.params.id,
-    // });
-
-    //
 
     if (!user) return res.status(400).send({ message: "Invalid what link" });
     console.log("user");
@@ -106,121 +93,7 @@ export const verifytoken = async (req, res, next) => {
     // res.status(500).send({ message: "Internal Serverrr Error" });
   }
 };
-//
-// export const login = async (req, res, next) => {
-//   try {
-//     const user = await User.findOne({ username: req.body.username });
 
-//     if (!user) return next(createError(404, "User not found!"));
-//     if (!user.verified) {
-//       let token = await Token.findOne({ userId: user._id });
-//       if (!token) {
-//         token = await new Token({
-//           userId: user._id,
-//           token: crypto.randomBytes(32).toString("hex"),
-//         }).save();
-//         const url = `${process.env.BASE_URL}auth/${user.id}/verify/${token.token}`;
-//         await sendEmail(user.email, "Verify Email", url);
-//       }
-
-//       return res
-//         .status(400)
-//         .send({ message: "An Email sent to your account please verify" });
-//     }
-
-//     const tokenn = user.generateAuthToken();
-//     res.status(200).send({ data: tokenn, message: "logged in successfully" });
-//     const isCorrect = bcrypt.compareSync(req.body.password, user.password);
-//     if (!isCorrect)
-//       //return next(createError(400, "Wrong password or username!"));
-//       return next(createError(400, "Wong password or username"));
-
-//     const token = jwt.sign(
-//       {
-//         id: user._id,
-//         isSeller: user.isSeller,
-//       },
-//       process.env.JWT_KEY
-//     );
-
-//     const { password, ...info } = user._doc;
-//     res
-//       .cookie("accessToken", token, {
-//         httpOnly: true,
-//       })
-//       .status(200)
-//       .send(info);
-//   } catch (err) {
-//     next(err);
-//   }
-// };
-
-// export const logout = async (req, res) => {
-//   res
-//     .clearCookie("accessToken", {
-//       sameSite: "none",
-//       secure: true,
-//     })
-//     .status(200)
-//     .send("User has been logged out.");
-// };
-// export const login = async (req, res, next) => {
-//   try {
-//     const user = await User.findOne({ username: req.body.username });
-
-//     if (!user) return next(createError(404, "User not found!"));
-//     if (!user.verified) {
-//       let token = await Token.findOne({ userId: user._id });
-//       if (!token) {
-//         token = await new Token({
-//           userId: user._id,
-//           token: crypto.randomBytes(32).toString("hex"),
-//         }).save();
-//         const url = `${process.env.BASE_URL}auth/${user.id}/verify/${token.token}`;
-//         await sendEmail(user.email, "Verify Email", url);
-//       }
-
-//       return res
-//         .status(400)
-//         .send({ message: "An Email sent to your account please verify" });
-//     }
-//     console.log("nn");
-//     const tokenn = user.generateAuthToken();
-//     res.status(200).send({ data: tokenn, message: "logged in successfully" });
-//     const isCorrect = bcrypt.compareSync(req.body.password, user.password);
-//     if (!isCorrect)
-//       //return next(createError(400, "Wrong password or username!"));
-//       return next(createError(400, "Wong password or username"));
-
-//     const token = jwt.sign(
-//       {
-//         id: user._id,
-//         isSeller: user.isSeller,
-//       },
-//       process.env.JWT_KEY
-//     );
-
-//     const { password, ...info } = user._doc;
-//     res
-//       .cookie("accessToken", token, {
-//         httpOnly: true,
-//       })
-//       .status(200)
-//       .send(info);
-//   } catch (err) {
-//     next(err);
-//   }
-// };
-
-// export const logout = async (req, res) => {
-//   res
-//     .clearCookie("accessToken", {
-//       sameSite: "none",
-//       secure: true,
-//     })
-//     .status(200)
-//     .send("User has been logged out.");
-// };
 
 export const login = async (req, res, next) => {
   try {
@@ -231,7 +104,7 @@ export const login = async (req, res, next) => {
       const isCorrect = bcrypt.compareSync(req.body.password, user.password);
       if (!isCorrect)
         //return next(createError(400, "Wrong password or username!"));
-        return next(createError(400, "Wong password or username"));
+          res.status(404).send({ message: "Wrong password or username" });
 
       const token = jwt.sign(
         {

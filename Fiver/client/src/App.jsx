@@ -18,6 +18,7 @@ import Pay from "./pages/pay/Pay";
 // import Cart from "./pages/cart/cart";
 import Team from "./pages/team/Team";
 import EmailVerify from "./pages/EmailVerify/emailVerify";
+
 import {
   QueryClient,
   QueryClientProvider,
@@ -88,13 +89,13 @@ function App() {
           element: <Login />,
         },
         {
-          path: "/pay/:id",
+          path: "/pay/:ids",
           element: <Pay />,
         },
-        // {
-        //   path: "/cart/:id",
-        //   element: <Cart />,
-        // },
+        {
+          path: "/cart",
+          element: <Cart />,
+        },
         {
           path: "/success",
           element: <Success />,
