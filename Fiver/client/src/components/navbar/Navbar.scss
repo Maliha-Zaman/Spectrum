@@ -17,9 +17,10 @@
       color: white;
   
       button {
-        background-color: white !important;
-        color: #39B6B5 !important;
-        border: 1px solid #39B6B5 !important;
+        // background-color: white !important;
+        // color: #39B6B5 !important;
+        // border: 1px solid #39B6B5 !important;
+        margin-top: -15px;
       }
     }
   
@@ -86,16 +87,16 @@
         }
   
         button {
-          color: white;
+          // color: white;
           padding: 10px 20px;
           border-radius: 5px;
-          border: 1px solid white;
+          // border: 1px solid white;
           background-color: transparent;
           cursor: pointer;
   
           &:hover {
-            background-color: #39B6B5;
-            border-color: #39B6B5;
+            // background-color: #39B6B5;
+            // border-color: #39B6B5;
           }
         }
       }
