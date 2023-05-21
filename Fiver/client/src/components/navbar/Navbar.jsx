@@ -45,11 +45,18 @@ function Navbar() {
           {/* <span>Liverr Business</span>
           <span>Explore</span> */}
           {/* <span>English</span> */}
-          {
-            !currentUser?.isSeller
-          }
+          {!currentUser?.isSeller}
           {currentUser ? (
             <div className="user" onClick={() => setOpen(!open)}>
+              {/* {!currentUser.isSeller && (
+                <>
+                  <Link className="link" to="/cart">
+                    Cart<span>0</span>
+                  </Link>
+                </>
+              )} */}
+              <img src={currentUser.img || "/img/noavatar.jpg"} alt="" />
+              <span>{currentUser?.username}</span>
               {!currentUser.isSeller && (
                 <>
                   <Link className="link" to="/cart">
@@ -57,15 +64,6 @@ function Navbar() {
                   </Link>
                 </>
               )}
-              <img src={currentUser.img || "/img/noavatar.jpg"} alt="" />
-              <span>{currentUser?.username}</span>
-                        {!currentUser.isSeller && (
-            <>
-              <Link className="link" to="/cart">
-                Cart<span>0</span>
-              </Link>
-            </>
-          )}
 
               {open && (
                 <div className="options">
@@ -101,7 +99,6 @@ function Navbar() {
               </Link>
             </>
           )}
-
         </div>
       </div>
       {(active || pathname !== "/") && (
