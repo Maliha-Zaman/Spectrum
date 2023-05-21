@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
@@ -6,6 +5,8 @@ import { useQuery } from "@tanstack/react-query";
 import "./Gig.scss";
 import { Slider } from "infinite-react-carousel/lib";
 import newRequest from "../../../../api/utils/newRequest";
+import getCurrentUser from "../../../../api/utils/getCurrentUser";
+
 import Reviews from "../../components/reviews/Reviews";
 
 function Gig() {
@@ -36,24 +37,31 @@ function Gig() {
     enabled: !!userId,
   });
   const addToCart = () => {
-    try{
+    try {
       setLoading(true);
-      
-      newRequest
-      .post(`/cart/${id}`)
-      .then((response) => {
+      const currentUser = getCurrentUser(); // Call the getCurrentUser function
+
+      if (!currentUser) {
+        setMessage("Please log in to add the product to your cart");
+        setTimeout(() => {
+          setMessage("");
+        }, 5000);
+        setLoading(false);
+        return; // Exit the function early
+      }
+      newRequest.post(`/cart/${id}`).then((response) => {
         setMessage(response.data.message); // Set the response message
-     
+
         setTimeout(() => {
           setMessage("");
         }, 5000);
         setLoading(false);
         navigate("/gig");
-      })
-      }catch(error) {
-        setMessage("Error adding product to cart"); // Set an error message
-        console.error(error);
-      };
+      });
+    } catch (error) {
+      setMessage("Error adding product to cart"); // Set an error message
+      console.error(error);
+    }
   };
   return (
     <div className="gig">
@@ -209,8 +217,9 @@ function Gig() {
               <button onClick={handleSubmit}>Continue</button>
             </Link> */}
             {message && <p>{message}</p>}
-            <button onClick={addToCart}>{loading ? <>Loading..</> : <>Add to cart</>}</button>
-           
+            <button onClick={addToCart}>
+              {loading ? <>Loading..</> : <>Add to cart</>}
+            </button>
           </div>
         </div>
       )}
