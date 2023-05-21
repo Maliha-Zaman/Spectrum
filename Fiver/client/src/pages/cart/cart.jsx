@@ -11,12 +11,11 @@ const Orders = () => {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const navigate = useNavigate();
   const { isLoading, error, data } = useQuery({
-    queryKey: ["cart"],
+    queryKey: ["mycart"],
     queryFn: () =>
       newRequest.get(`/cart`).then((res) => {
         return res.data;
       }),
-    // staleTime: 1000,
   });
   const mutation = useMutation({
     mutationFn: (id) => {
