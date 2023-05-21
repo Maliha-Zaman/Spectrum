@@ -15,4 +15,4 @@ router.post("/:id", verifyToken, posttocart);
 // import { deleteUser } from "../controllers/user.controller.js";
 // import { verifyToken } from "../middleware/jwt.js";
 
- export default router;
+export default router;

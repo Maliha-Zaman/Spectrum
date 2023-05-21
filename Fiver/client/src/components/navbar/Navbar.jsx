@@ -54,15 +54,13 @@ function Navbar() {
             <div className="user" onClick={() => setOpen(!open)}>
               <img src={currentUser.img || "/img/noavatar.jpg"} alt="" />
               <span>{currentUser?.username}</span>
-              {!(currentUser.isSeller) && (
+              {!currentUser.isSeller && (
                 <>
                   <Link className="link" to="/cart">
                     Cart<span>0</span>
                   </Link>
                 </>
-
-              ) 
-              }
+              )}
               {open && (
                 <div className="options">
                   {currentUser.isSeller && (
@@ -73,9 +71,7 @@ function Navbar() {
                       <Link className="link" to="/add">
                         Add New Product
                       </Link>
-                     
                     </>
-        
                   )}
                   <Link className="link" to="/orders">
                     Orders
@@ -97,15 +93,16 @@ function Navbar() {
               <Link className="link" to="/register">
                 <button>Join</button>
               </Link>
-          
-
             </>
           )}
         </div>
       </div>
       {(active || pathname !== "/") && (
         <>
-        <script src="https://kit.fontawesome.com/0ba00a17f9.js" crossorigin="anonymous"></script>
+          <script
+            src="https://kit.fontawesome.com/0ba00a17f9.js"
+            crossorigin="anonymous"
+          ></script>
           <hr />
           <div className="menu">
             <Link className="link menuLink" to="/gigs?cat=shirt">

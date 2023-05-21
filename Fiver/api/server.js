@@ -12,7 +12,7 @@ import conversationRoute from "./routes/conversation.route.js";
 import messageRoute from "./routes/message.route.js";
 import reviewRoute from "./routes/review.route.js";
 import authRoute from "./routes/auth.route.js";
- import cartRoute from "./routes/cart.route.js";
+import cartRoute from "./routes/cart.route.js";
 
 import cookieParser from "cookie-parser";
 import cors from "cors";
@@ -33,7 +33,7 @@ app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/gigs", gigRoute);
- app.use("/api/cart", cartRoute);
+app.use("/api/cart", cartRoute);
 app.use("/api/orders", orderRoute);
 app.use("/api/conversations", conversationRoute);
 app.use("/api/messages", messageRoute);
