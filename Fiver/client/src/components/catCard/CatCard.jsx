@@ -28,6 +28,12 @@ function CatCard({ card }) {
       <p className="title">Pant</p>
     </div>
     </Link>
+    <Link to="/gigs?cat=kameez">
+    <div className="catCard">
+      <img src="./img/kurta.png" alt="" />
+      <p className="title">Kameez</p>
+    </div>
+    </Link>
     <Link to="/gigs?cat=shoes">
     <div className="catCard">
       <img src="./img/shoes.png" alt="" />
@@ -46,13 +52,19 @@ function CatCard({ card }) {
       <p className="title">Bag</p>
     </div>
     </Link>
+    <Link to="/gigs?cat=glasses">
+    <div className="catCard">
+      <img src="./img/glasses.png" alt="" />
+      <p className="title">Glasses</p>
+    </div>
+    </Link>
     </div>
     </>
   );
 }
 export default CatCard;
     {/* <div className="catCard">
-      <img src={card.img} alt="" />
-      <p className="desc">{card.desc}</p>
+    <img src={card.img} alt="" />
+    <p className="desc">{card.desc}</p>
       <p className="title">{card.title}</p>
     </div> */}

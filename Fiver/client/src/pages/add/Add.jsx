@@ -93,9 +93,11 @@ const Add = () => {
               <option value="shirt">Shirt</option>
               <option value="tshirt">Tshirt</option>
               <option value="pant">Pant</option>
+              <option value="kameez">Kameez</option>
               <option value="shoes">Shoes</option>
               <option value="watches">Watch</option>
               <option value="bag">Bag</option>
+              <option value="glasses">Glasses</option>
             </select>
             <div className="images">
               <div className="imagesInputs">
