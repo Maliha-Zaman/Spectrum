@@ -110,8 +110,7 @@ function Register() {
             required
             onChange={handleChange}
           />
-          {errorMessage && <div className="error">{errorMessage}</div>}
-          {msg && <div className="error">{setMsg}</div>}
+          
 
           {/* {error && <div>{error}</div>}
           {msg && <div>{msg}</div>} */}
@@ -143,6 +142,8 @@ function Register() {
             rows="10"
             onChange={handleChange}
           ></textarea>
+          {errorMessage && <div className="error">{errorMessage}</div>}
+          {msg && <div className="error">{setMsg}</div>}
                 <button type="submit">
             {/* Register */}
             {loading ? <>Loading..</> : <>Register</>}

@@ -79,7 +79,13 @@ function Navbar() {
               {!currentUser.isSeller && (
                         <>
               <Link className="link" to="/cart">
-                Cart
+                <button class="cart-button" aria-label="Add to Cart">
+                  {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M21 7h-4V6a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3v1H3a1 1 0 0 0 0 2h1v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9h1a1 1 0 0 0 0-2zM7 6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1H7V6zm9 14H8V9h8v11zm-4-2a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm-3-4v2h2v-2h-2zm0-4h2V9h-2V6zm4 0h2V9h-2V6z"/>
+                  </svg> */}
+                  <img src="/img/cart2.png" alt="" />
+                </button>
               </Link>
             </>
           )}

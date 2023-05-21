@@ -11,6 +11,8 @@ import Reviews from "../../components/reviews/Reviews";
 
 function Gig() {
   const [message, setMessage] = useState("");
+  // const [quantity, setQuantity] = useState(0);
+  // Declare the quantity state variable
 
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
@@ -39,6 +41,8 @@ function Gig() {
   const addToCart = () => {
     try {
       setLoading(true);
+      // After successfully adding to the cart, update the quantity
+      // setQuantity(quantity - 1);
       const currentUser = getCurrentUser(); // Call the getCurrentUser function
 
       if (!currentUser) {
@@ -62,6 +66,13 @@ function Gig() {
       setMessage("Error adding product to cart"); // Set an error message
       console.error(error);
     }
+    //
+    // useEffect(() => {
+    //   if (!getCurrentUser()) {
+    //     setQuantity(data?.quantity || 0);
+    //   }
+    // }, [data?.quantity]);
+    // //
   };
   return (
     <div className="gig">
@@ -220,7 +231,15 @@ function Gig() {
             {/* <button onClick={addToCart} disabled={data.quantity === 0}>
               {loading ? <>Loading..</> : <>Add to cart</>}
             </button> */}
-            {data.quantity === 0 ? (
+            {/* {data.quantity === 0 ? (  */}
+            {/* {quantity === 0 ? (
+              <button disabled>Sold Out</button>
+            ) : (
+              <button onClick={addToCart} disabled={loading}>
+                {loading ? "Loading..." : "Add to Cart"}
+              </button>
+            )} */}
+            {data.quantity <= 0 ? (
               <button disabled>Sold Out</button>
             ) : (
               <button onClick={addToCart} disabled={loading}>

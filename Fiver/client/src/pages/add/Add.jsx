@@ -158,7 +158,7 @@ const Add = () => {
             /> */}
             <label htmlFor="">Add Features for Search</label>
             <form action="" className="add" onSubmit={handleFeature}>
-              <input type="text" placeholder="e.g. page design" />
+              <input type="text" placeholder="e.g. shoes" />
               {/* <input type="text" placeholder="e.g. file uploading" />
             <input type="text" placeholder="e.g. setting up a domain" />
             <input type="text" placeholder="e.g. hosting" /> */}

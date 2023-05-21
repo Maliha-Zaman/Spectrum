@@ -172,7 +172,7 @@ function Home() {
               <img src="./img/check.png" alt="" />
               Get your business the exposure it needs
             </div>
-            <button>Explore Spectrum Business</button>
+            {/* <button>Explore Spectrum Business</button> */}
           </div>
           <div className="item">
             <img
