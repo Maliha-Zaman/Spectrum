@@ -4,18 +4,18 @@ import User from "../models/user.model.js";
 
 import getCurrentUser from "../utils/getCurrentUser.js";
 
+// const gigowner = await Gig.findOne({
+//   //...(req.isSeller ? { sellerId: req.userId } : { buyerId: req.userId }),
+//   userId: req.userId,
+// });
+// if (gigowner && gigowner.userId != null) {
+//   console.log(orders.userId);
+//   //   return res.status(400).send({ message: "You can not buy your own gig" }); //throw new Error("Passwords must be same");
+//   return res.json({ message: "You can not buy your own product" });
+// }
 export const posttocart = async (req, res, next) => {
   try {
     console.log("Cart");
-    // const gigowner = await Gig.findOne({
-    //   //...(req.isSeller ? { sellerId: req.userId } : { buyerId: req.userId }),
-    //   userId: req.userId,
-    // });
-    // if (gigowner && gigowner.userId != null) {
-    //   console.log(orders.userId);
-    //   //   return res.status(400).send({ message: "You can not buy your own gig" }); //throw new Error("Passwords must be same");
-    //   return res.json({ message: "You can not buy your own product" });
-    // }
     const seller = await User.findOne({
       //...(req.isSeller ? { sellerId: req.userId } : { buyerId: req.userId }),
       _id: req.userId,
@@ -35,28 +35,6 @@ export const posttocart = async (req, res, next) => {
     console.log(newproduct);
     const cart = await Cart.findOne({ userId });
 
-    //   const updatedCart = await Cart.findOneAndUpdate(
-    //     { userId: userId },
-    //     {
-    //       $push: {
-    //         products: {
-    //           gigId: id,
-    //           sellerId: product.userId,
-    //           price: product.price,
-    //           //quantity: quantity + 1,
-    //         },
-    //       },
-    //     }
-    //   );
-    //   cart.products = cart.products.concat(
-    //     products.map((newproduct) => ({
-    //       gigId: id,
-    //       sellerId: newproduct.userId,
-    //       price: newproduct.price,
-    //       //quantity: quantity + 1,
-    //     }))
-    //   );
-    //   await cart.save();
     if (cart) {
       console.log("Existing cart found");
 
