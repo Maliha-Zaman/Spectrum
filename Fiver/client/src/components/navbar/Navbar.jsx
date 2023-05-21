@@ -20,8 +20,6 @@ function Navbar() {
     };
   }, []);
 
-  // const currentUser = null
-
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const navigate = useNavigate();
   const handleLogout = async () => {
