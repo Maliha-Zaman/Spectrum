@@ -128,4 +128,40 @@ export const getfromcart = async (req, res, next) => {
     next(err);
   }
 };
+export const deletefromcart= async (req, res, next) => {
+  try { 
+    console.log(req.params.id);
+    
+    //     const cart = await Cart.findOne({
+      //   products: { $elemMatch: { gigId: req.params.products.gigId } }
+      // });
+      const cart = await Cart.findOneAndUpdate(
+        {
+          userId: req.userId,
+          "products.gigId": req.params.id
+    
+        },
+        {
+          $pull: {
+            products: { gigId: req.params.id }
+          }
+        },
+        { new: true }
+        );
+        console.log("hehe");
+// await Gig.findByIdAndDelete(req.params.id);
+//     res.status(200).send("Gig has been deleted!");
+    //  if (cart)
+    //  { console.log(cart);
+
+    //    await Cart.findByIdAndDelete(req.params.gigId);
+    //  res.status(200).send("product has been deleted from the cart!");
+    // }
+
+        res.status(200).send("Product has been deleted!");
+
+  } catch (err) {
+    next(err);
+  }
+};
 //

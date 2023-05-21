@@ -91,11 +91,12 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import "./cart.scss";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation,useQuery,useQueryClient } from "@tanstack/react-query";
 import newRequest from "../../../../api/utils/newRequest";
 import { useNavigate } from "react-router-dom";
 const Orders = () => {
   const { id } = useParams();
+  const queryClient = useQueryClient();
 
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const navigate = useNavigate();
@@ -105,10 +106,25 @@ const Orders = () => {
       newRequest.get(`/cart`).then((res) => {
         return res.data;
       }),
+      staleTime: 1000,
   });
+const mutation = useMutation({
+    mutationFn: (id) => {
+      return newRequest.delete(`/cart/${id}`);
+    },
+
+    onSuccess: () => {
+      queryClient.invalidateQueries(["cart"]);
+    },
+  });
+  const handleDelete = (id) => {
+    mutation.mutate(id);
+  };
+
   const handlePay = (cartId) => {
     navigate(`/pay/${cartId}`);
   };
+ 
   return (
     <div className="orders">
       {isLoading ? (
@@ -127,6 +143,7 @@ const Orders = () => {
                 {/* <th>Image</th> */}
                 <th>Price</th>
                 <th>Quantity</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -137,6 +154,14 @@ const Orders = () => {
                       <td>{product.title}</td>
                       <td>{product.price}</td>
                       <td>{product.quantity}</td>
+                  <td>
+                  <img
+                    className="delete"
+                    src="./img/delete.png"
+                    alt=""
+                    onClick={() => handleDelete(product.gigId)}
+                  />
+                </td>
                     </tr>
                   ))}
                 </React.Fragment>
