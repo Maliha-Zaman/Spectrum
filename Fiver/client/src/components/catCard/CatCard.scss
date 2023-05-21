@@ -40,6 +40,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  background-color: #f1fdf7;
 }
 
 .catCard {
@@ -51,6 +52,7 @@
   height: 300px;
   width: 250px;
   margin: 30px;
+  border-radius: 15px;
   .title {
     font-weight: bold;
     position: relative;
@@ -74,6 +76,13 @@ a:visited {
 .catCard img {
   max-width: 100%;
   height: auto;
+}
+.catCard {
+  transition: transform 0.3s;
+}
+
+.catCard:hover {
+  transform: scale(1.1);
 }
 
 // title:visited {
