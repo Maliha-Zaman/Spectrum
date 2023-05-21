@@ -277,7 +277,7 @@ export const getOrders = async (req, res, next) => {
 //       gigId: product.gigId,
 //       sellerId: product.sellerId,
 //       buyerId: userId,
-//       isCompleted: false,
+//       isCompleted: false,AuthInMern-Authentication-In-MERN
 //     });
 //     console.log("paymentafterhere3");
 
