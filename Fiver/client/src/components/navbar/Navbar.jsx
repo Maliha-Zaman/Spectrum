@@ -108,9 +108,9 @@ function Navbar() {
             <Link className="link menuLink" to="/gigs?cat=pant">
               Pants
             </Link>
-            {/* <Link className="link menuLink" to="/">
-              
-            </Link> */}
+            <Link className="link menuLink" to="/gigs?cat=kameez">
+              Kameez              
+            </Link>
             <Link className="link menuLink" to="/gigs?cat=shoes">
               Shoes
             </Link>
@@ -120,12 +120,9 @@ function Navbar() {
             <Link className="link menuLink" to="/gigs?cat=watches">
               Watches
             </Link>
-            {/* <Link className="link menuLink" to="/">
-              Business
+            <Link className="link menuLink" to="/gigs?cat=glasses">
+              Glasses
             </Link>
-            <Link className="link menuLink" to="/">
-              Lifestyle
-            </Link> */}
           </div>
           {/* <hr /> */}
         </>
