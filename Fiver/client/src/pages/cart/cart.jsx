@@ -11,7 +11,7 @@ const Orders = () => {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const navigate = useNavigate();
   const { isLoading, error, data } = useQuery({
-    queryKey: ["mycart"],
+    queryKey: ["cart"],
     queryFn: () =>
       newRequest.get(`/cart`).then((res) => {
         return res.data;
