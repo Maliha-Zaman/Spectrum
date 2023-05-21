@@ -91,11 +91,12 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import "./cart.scss";
-import { useMutation,useQuery } from "@tanstack/react-query";
+import { useMutation,useQuery,useQueryClient } from "@tanstack/react-query";
 import newRequest from "../../../../api/utils/newRequest";
 import { useNavigate } from "react-router-dom";
 const Orders = () => {
   const { id } = useParams();
+  const queryClient = useQueryClient();
 
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const navigate = useNavigate();
@@ -105,8 +106,9 @@ const Orders = () => {
       newRequest.get(`/cart`).then((res) => {
         return res.data;
       }),
+      staleTime: 1000,
   });
-  const mutation = useMutation({
+const mutation = useMutation({
     mutationFn: (id) => {
       return newRequest.delete(`/cart/${id}`);
     },
@@ -114,13 +116,15 @@ const Orders = () => {
     onSuccess: () => {
       queryClient.invalidateQueries(["cart"]);
     },
-  })
+  });
+  const handleDelete = (id) => {
+    mutation.mutate(id);
+  };
+
   const handlePay = (cartId) => {
     navigate(`/pay/${cartId}`);
   };
-   const handleDelete = (id) => {
-    mutation.mutate(id);
-  };
+ 
   return (
     <div className="orders">
       {isLoading ? (
