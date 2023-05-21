@@ -16,10 +16,14 @@ import getCurrentUser from "../utils/getCurrentUser.js";
 export const posttocart = async (req, res, next) => {
   try {
     console.log("Cart");
+    if (!req.userId) {
+      res.json({ message: "Please log in to buy product" });
+    }
     const seller = await User.findOne({
       //...(req.isSeller ? { sellerId: req.userId } : { buyerId: req.userId }),
       _id: req.userId,
     });
+
     if (seller.isSeller) {
       //   console.log(orders.userId);
       //   return res.status(400).send({ message: "You can not buy your own gig" }); //throw new Error("Passwords must be same");
@@ -128,38 +132,50 @@ export const getfromcart = async (req, res, next) => {
     next(err);
   }
 };
-export const deletefromcart= async (req, res, next) => {
-  try { 
+export const deletefromcart = async (req, res, next) => {
+  try {
     console.log(req.params.id);
-    
+    const cart_exists = await Cart.findOne({ userId: req.userId });
+    if (cart_exists) {
+      console.log("found");
+    }
     //     const cart = await Cart.findOne({
-      //   products: { $elemMatch: { gigId: req.params.products.gigId } }
-      // });
-      const cart = await Cart.findOneAndUpdate(
-        {
-          userId: req.userId,
-          "products.gigId": req.params.id
-    
+    //   products: { $elemMatch: { gigId: req.params.products.gigId } }
+    // });
+    const cart = await Cart.findOneAndUpdate(
+      {
+        userId: req.userId,
+        "products.gigId": req.params.id,
+      },
+      {
+        $pull: {
+          products: { gigId: req.params.id },
         },
-        {
-          $pull: {
-            products: { gigId: req.params.id }
-          }
-        },
-        { new: true }
-        );
-        console.log("hehe");
-// await Gig.findByIdAndDelete(req.params.id);
-//     res.status(200).send("Gig has been deleted!");
+      },
+      { new: true }
+    );
+
+    console.log("hehe");
+    console.log(cart_exists.products.length);
+    // await Gig.findByIdAndDelete(req.params.id);
+    //     res.status(200).send("Gig has been deleted!");
     //  if (cart)
     //  { console.log(cart);
 
     //    await Cart.findByIdAndDelete(req.params.gigId);
     //  res.status(200).send("product has been deleted from the cart!");
     // }
+    if (cart_exists && cart_exists.products.length == 1) {
+      console.log("deleting");
+      await Cart.findByIdAndDelete(cart_exists._id);
+      console.log("deleting done");
 
-        res.status(200).send("Product has been deleted!");
-
+      //res.status(200).send("Cart has been deleted!");
+    }
+    // else {
+    //   res.status(200).send("Product has been deleted!");
+    // }
+    res.status(200).send("Product has been deleted!");
   } catch (err) {
     next(err);
   }

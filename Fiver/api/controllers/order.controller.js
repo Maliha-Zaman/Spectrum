@@ -1,33 +1,3 @@
-// import createError from "../utils/createError.js";
-
-//
-
-//   await newOrder.save();
-
-//   res.status(200).send({
-//     clientSecret: paymentIntent.client_secret,
-//   });
-// };
-////yyyyy
-// export const confirm = async (req, res, next) => {
-//   try {
-//     const orders = await Order.findOneAndUpdate(
-//       {
-//         payment_intent: req.body.payment_intent,
-//       },
-//       {
-//         $set: {
-//           isCompleted: true,
-//         },
-//       }
-//     );
-
-//     res.status(200).send("Order has been confirmed.");
-//   } catch (err) {
-//     next(err);
-//   }
-// };
-// import User from "../models/user.model.js";
 import createError from "../utils/createError.js";
 import Gig from "../models/gig.model.js";
 import Order from "../models/order.model.js";
