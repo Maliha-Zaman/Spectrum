@@ -54,13 +54,7 @@ function Navbar() {
             <div className="user" onClick={() => setOpen(!open)}>
               <img src={currentUser.img || "/img/noavatar.jpg"} alt="" />
               <span>{currentUser?.username}</span>
-              {!currentUser.isSeller && (
-                <>
-                  <Link className="link" to="/cart">
-                    Cart<span>0</span>
-                  </Link>
-                </>
-              )}
+              
               {open && (
                 <div className="options">
                   {currentUser.isSeller && (
@@ -92,6 +86,13 @@ function Navbar() {
               </Link>
               <Link className="link" to="/register">
                 <button>Join</button>
+              </Link>
+            </>
+          )}
+          {!currentUser.isSeller && (
+            <>
+              <Link className="link" to="/cart">
+                Cart<span>0</span>
               </Link>
             </>
           )}
