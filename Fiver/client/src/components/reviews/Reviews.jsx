@@ -67,14 +67,30 @@ const Reviews = ({ gigId }) => {
       <div className="add">
         <h3>Add a review</h3>
         <form action="" className="addForm" onSubmit={handleSubmit}>
-          <input type="text" placeholder="write your review" />
-          <select name="" id="">
+          <input type="text" placeholder="Write your review" />
+          {/* <select name="" id="">
             <option value={1}>1</option>
             <option value={2}>2</option>
             <option value={3}>3</option>
             <option value={4}>4</option>
             <option value={5}>5</option>
-          </select>
+          </select> */}
+          <div>
+          <h3>Rating:</h3> <br />
+            <span>Rate this product on a scale of 5: </span> <br />
+            {[1, 2, 3, 4, 5].map((value) => (
+              <label key={value}>
+                <input
+                  type="radio"
+                  name="rating"
+                  value={value}
+                  // checked={selectedRating === value} 
+                  // onChange={handleRatingChange}
+                />
+                {value}<br />
+              </label>
+            ))}
+          </div>
           {errorMessage && <div className="error">{errorMessage}</div>}
 
           <button>Send</button>

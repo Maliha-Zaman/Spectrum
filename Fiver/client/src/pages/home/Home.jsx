@@ -52,7 +52,8 @@ function Home() {
             </p>
           </div>
           <div className="item">
-            <video src="./img/video.mp4" controls />
+            {/* <video src="./img/video.mp4" controls /> */}
+            <img src="./img/spectrum.png" alt="" />
           </div>
         </div>
       </div>

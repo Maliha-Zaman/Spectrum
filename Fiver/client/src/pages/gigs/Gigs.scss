@@ -9,17 +9,13 @@
       display: flex;
       flex-direction: column;
       gap: 15px;
-  
+      margin-bottom: 400px;
       .breadcrumbs {
         font-weight: 300;
         text-transform: uppercase;
         font-size: 13px;
         color: #555;
       }
-  
-      h1 {
-      }
-  
       p {
         color: #999;
         font-weight: 300;

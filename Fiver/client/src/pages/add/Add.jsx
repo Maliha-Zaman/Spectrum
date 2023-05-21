@@ -85,7 +85,7 @@ const Add = () => {
             <input
               type="text"
               name="title"
-              placeholder="e.g. I will do something I'm really good at"
+              placeholder="e.g. Silk shirt"
               onChange={handleChange}
             />
             <label htmlFor="">Category</label>
@@ -105,19 +105,19 @@ const Add = () => {
                   type="file"
                   onChange={(e) => setSingleFile(e.target.files[0])}
                 />
-                <label htmlFor="">Upload Images</label>
-                <input
+                <label htmlFor="">Upload More Images</label>
+                <input 
                   type="file"
                   multiple
                   onChange={(e) => setFiles(e.target.files)}
                 />
-              </div>
               <button onClick={handleUpload}>
                 {uploading ? "uploading" : "Upload"}
               </button>
+              </div>
             </div>
             <label htmlFor="">Delivery Time (e.g. 3 days)</label>
-            <input type="number" name="deliverTime" onChange={handleChange} />
+            <input type="number" name="deliveryTime" onChange={handleChange} />
 
             
             
@@ -143,7 +143,7 @@ const Add = () => {
             <textarea
               name="desc"
               id=""
-              placeholder="Brief descriptions to introduce your service to customers"
+              placeholder="Brief descriptions to introduce your product to customers"
               cols="0"
               rows="16"
               onChange={handleChange}

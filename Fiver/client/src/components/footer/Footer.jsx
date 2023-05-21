@@ -14,7 +14,7 @@ function Footer() {
             <h2>About</h2>
           </div> 
         </div> */}
-        {/* <hr /> */}
+        <hr />
         <div className="bottom">
           <div className="left">
             <h1>Spectrum</h1>
@@ -32,7 +32,7 @@ function Footer() {
               <img src="/img/language.png" alt="" />
               <span>English</span>
             </div>
-            <Link to="">
+            {/* <Link to="">
               <button>Categories</button><t/>
 
             </Link>
@@ -41,7 +41,7 @@ function Footer() {
               
               <button>Team</button>
 
-            </Link>
+            </Link> */}
             {/* <div className="link">
               <img src="/img/coin.png" alt="" />
               <span>BDT</span>
