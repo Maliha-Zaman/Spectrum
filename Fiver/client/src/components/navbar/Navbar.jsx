@@ -47,8 +47,6 @@ function Navbar() {
           {/* <span>English</span> */}
           {
             !currentUser?.isSeller
-            // &&
-            // <span>Become a Seller</span>
           }
           {currentUser ? (
             <div className="user" onClick={() => setOpen(!open)}>
@@ -68,6 +66,7 @@ function Navbar() {
               </Link>
             </>
           )}
+
               {open && (
                 <div className="options">
                   {currentUser.isSeller && (
