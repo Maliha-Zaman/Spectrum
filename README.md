@@ -4,13 +4,13 @@ Spectrum holds the basic properties of an e-commerce website along with an addit
 
 ## Key Features
 
-- Buy/Sell
+### Buy/Sell
 Customers can access and buy products from our website. Brands and pages can sell products through our website.
 
-- Report & Review 
+### Report & Review 
 Customers can report sellers in case they have any complaints regarding the products or they can put reviwes if they like any products.
 
-- Chat System
+### Chat System
 Built-in chat system through which our customer can have direct contact with the owners of products on display.
 
 ## Tools and Technologies 
@@ -25,9 +25,18 @@ We used the MERN stack technology for our project.
 
 - Clone the project or down the zip file.
 - Run the following command to install all the necessary packages:
-  ```bash
-   npm install
-   
+ ```bash
+npm install
+```
+- In your IDE, navigate the api folder of Fiver and open an integrated terminal to run the following command to start the server:
+```bash
+nodemon server.js
+```
+Make sure to use your own MongoURI.
+- Navigate to client folder of Fiver and open an integrated terminal to run the following command to start the localhost:
+```bash
+npm run dev
+```
 
 
 
