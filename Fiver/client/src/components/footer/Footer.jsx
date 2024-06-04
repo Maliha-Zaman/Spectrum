@@ -17,7 +17,7 @@ function Footer() {
         <hr />
         <div className="bottom">
           <div className="left">
-            <h1>Spectrum</h1>
+            <h1>UpTrend</h1>
             {/* <span>© Spectrum Ltd. 2023</span> */}
           </div>
           <div className="right">

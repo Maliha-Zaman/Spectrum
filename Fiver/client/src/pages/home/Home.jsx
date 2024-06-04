@@ -53,7 +53,6 @@ function Home() {
           </div>
           <div className="item">
             {/* <video src="./img/video.mp4" controls /> */}
-            <img src="./img/spectrum.png" alt="" />
           </div>
         </div>
       </div>
@@ -149,7 +148,7 @@ function Home() {
         <div className="container">
           <div className="item">
             <h1>
-              Spectrum <i>business</i>
+              UpTrend <i>business</i>
             </h1>
             <h1>
               A business solution designed for <i>sellers</i>

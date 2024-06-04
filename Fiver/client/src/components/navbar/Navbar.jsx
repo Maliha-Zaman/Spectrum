@@ -37,7 +37,7 @@ function Navbar() {
       <div className="container">
         <div className="logo">
           <Link className="link" to="/">
-            <span className="text">Spectrum</span>
+            <span className="text">UpTrend</span>
           </Link>
           {/* <span className="dot">.</span> */}
         </div>
@@ -120,12 +120,6 @@ function Navbar() {
             </Link>
             <Link className="link menuLink" to="/gigs?cat=kameez">
               Kameez
-            </Link>
-            <Link className="link menuLink" to="/gigs?cat=shoes">
-              Shoes
-            </Link>
-            <Link className="link menuLink" to="/gigs?cat=bag">
-              Bags
             </Link>
             <Link className="link menuLink" to="/gigs?cat=watches">
               Watches
